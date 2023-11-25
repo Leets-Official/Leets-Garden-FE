@@ -15,6 +15,7 @@ const Header = ({ leftText, middleText, nickName }) => {
         align-items: flex-end;
         font-weight: 500;
         font-family: 'Jua', sans-serif;
+        text-align: center;
     `;
 
     const LeftText = styled.div`
