@@ -28,7 +28,7 @@ const LoginButton = styled.button`
     cursor: pointer;
 `;
 
-const AuthButton = styled.button`
+const SignUpButton = styled.button`
     background-color: #F4FFFF;
     border: none;
     padding-left: 30px;
@@ -41,7 +41,7 @@ const AuthButton = styled.button`
     cursor: pointer;
 `;
 
-const StyledLoginForm = styled.div`
+const StyledSignUp = styled.div`
     background-color: #F4FFFF;
     border-radius: 10px;
     display: flex;
@@ -59,14 +59,18 @@ const Image = styled.img`
     width: 70px;
 `;
 
-const LoginForm = () => {
+const SignUpForm = () => {
 
     const navigate = useNavigate();
     const emailRef = useRef();
     const passwordRef = useRef();
+    const passwordCheckRef = useRef();
+    const userNameRef = useRef();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordCheck, setPasswordCheck] = useState("");
+    const [userName, setUserName] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -85,14 +89,16 @@ const LoginForm = () => {
 
 
     return (
-        <StyledLoginForm>
+        <StyledSignUp>
             <Image src='/images/login2.png'/>
-            <AuthButton onClick={() => navigate('/auth')}>회원가입</AuthButton>
+            <SignUpButton onClick={() => navigate('/login')}>로그인</SignUpButton>
             <Input type='text' value={email} ref={emailRef} name='email' placeholder='Email' onChange={(e) => { setEmail(e.target.value) }} />
             <Input type='password' value={password} ref={passwordRef} name='password' placeholder='Password' onChange={(e) => { setPassword(e.target.value) }} />
-            <LoginButton onClick={handleSubmit}>로그인</LoginButton>
-        </StyledLoginForm>
+            <Input type='password' value={passwordCheck} ref={passwordCheckRef} name='passwordCheck' placeholder='Password Check' onChange={(e) => { setPasswordCheck(e.target.value) }} />
+            <Input type='text' value={userName} ref={userNameRef} name='username' placeholder='UserName' onChange={(e) => { setUserName(e.target.value) }} />
+            <LoginButton onClick={handleSubmit}>회원가입</LoginButton>
+        </StyledSignUp>
     );
 };
 
-export default LoginForm;
+export default SignUpForm;
