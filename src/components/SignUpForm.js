@@ -62,6 +62,7 @@ const Image = styled.img`
 const SignUpForm = () => {
 
     const navigate = useNavigate();
+    
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordCheckRef = useRef();
