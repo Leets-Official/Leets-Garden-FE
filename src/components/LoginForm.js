@@ -28,19 +28,6 @@ const LoginButton = styled.button`
     cursor: pointer;
 `;
 
-const AuthButton = styled.button`
-    background-color: #F4FFFF;
-    border: none;
-    padding-left: 30px;
-    padding-right: 15px;
-    padding-top: 10px;
-    margin-left: 300px;
-    font-family: 'Jua', sans-serif;
-    font-size: 20px;
-    text-align: end;
-    cursor: pointer;
-`;
-
 const StyledLoginForm = styled.div`
     background-color: #F4FFFF;
     border-radius: 10px;
@@ -48,33 +35,34 @@ const StyledLoginForm = styled.div`
     flex-direction: column;
     width: 30%;
     margin-top: 100px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 30px;
-    padding-bottom: 100px;
+    padding-bottom: 30px;
 `;
 
 const Image = styled.img`
     width: 70px;
+    margin-bottom: 20px;
 `;
 
 const LoginForm = () => {
 
     const navigate = useNavigate();
     
-    const emailRef = useRef();
+    const userNameRef = useRef();
     const passwordRef = useRef();
 
-    const [email, setEmail] = useState("");
+    const [userName, setuserName] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (email.length < 1) {
-            window.alert('이메일을 입력해주세요.')
-            emailRef.current.focus();
+        if (userName.length < 1) {
+            window.alert('학번을 입력해주세요.')
+            userNameRef.current.focus();
             return ;
         }
         if (password.length < 1) {
@@ -88,8 +76,7 @@ const LoginForm = () => {
     return (
         <StyledLoginForm>
             <Image src='/images/login2.png'/>
-            <AuthButton onClick={() => navigate('/auth')}>회원가입</AuthButton>
-            <Input type='text' value={email} ref={emailRef} name='email' placeholder='Email' onChange={(e) => { setEmail(e.target.value) }} />
+            <Input type='text' value={userName} ref={userNameRef} name='username' placeholder='Username' onChange={(e) => { setuserName(e.target.value) }} />
             <Input type='password' value={password} ref={passwordRef} name='password' placeholder='Password' onChange={(e) => { setPassword(e.target.value) }} />
             <LoginButton onClick={handleSubmit}>로그인</LoginButton>
         </StyledLoginForm>

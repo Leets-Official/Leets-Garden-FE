@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Header from '../components/Header';
 import LoginContent from '../components/LoginContent';
 import LoginForm from '../components/LoginForm';
+
 const StyledLogin = styled.div`
     position: relative;
     padding-left: 300px;
