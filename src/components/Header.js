@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 
 const Header = ({ leftText, middleText, nickName }) => {
-    const Header= styled.div`
+    const Header = styled.div`
         display: flex;
         background-color: #548D54;
         color: black;
@@ -19,17 +19,35 @@ const Header = ({ leftText, middleText, nickName }) => {
 
     const LeftText = styled.div`
         font-size: 60px;
-        width: 450px;
+        width: 34%;
+        margin-left: 5%;
+
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+            margin-left: 0%;
+        }
     `;
 
     const MiddleText = styled.div`
         font-size: 60px;
-        width: 450px;
+        width: 33%;
+
+        @media screen and (max-width: 1200px) {
+            width: 0%;
+            font-size: 0px;
+        }
     `;
 
     const NickName = styled.div`
         font-size: 30px;
-        width: 450px;
+        width: 33%;
+        margin-right: 5%;
+
+        @media screen and (max-width: 1200px) {
+            width: 0%;
+            font-size: 0px;
+            margin-right: 0%;
+        }
     `;
 
     const Sprout = styled.img`
