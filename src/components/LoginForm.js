@@ -33,13 +33,20 @@ const StyledLoginForm = styled.div`
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 22%;
     margin-top: 100px;
     margin-bottom: 100px;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 30px;
     padding-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    @media screen and (max-width: 1200px) {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        margin-top: 30px;
+    }
 `;
 
 const Image = styled.img`

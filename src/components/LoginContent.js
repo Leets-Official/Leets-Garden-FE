@@ -4,10 +4,16 @@ import styled from 'styled-components';
 const StyledLoginContent = styled.div`
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 30%;
     margin-top: 200px;
     margin-bottom: 200px;
     white-space: nowrap;
+    text-align: center;
+    @media screen and (max-width: 1200px) {
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
 `;
 
 const SubContent = styled.div`

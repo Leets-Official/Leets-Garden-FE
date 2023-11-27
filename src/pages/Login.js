@@ -6,10 +6,14 @@ import LoginForm from '../components/LoginForm';
 
 const StyledLogin = styled.div`
     position: relative;
-    padding-left: 300px;
-    padding-right: 300px;
     display: flex;
     justify-content: space-evenly;
+
+    @media screen and (max-width: 1200px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 const BackGround = styled.div`
@@ -30,8 +34,8 @@ const Login = () => {
             <Header leftText={'Leets Garden'}
                 middleText={'새싹 키우기'}
             />
-            <StyledLogin>
             <BackGround />
+            <StyledLogin>
                 <LoginContent />
                 <LoginForm />
             </StyledLogin>
