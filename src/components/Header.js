@@ -7,9 +7,8 @@ const Header = ({ leftText, middleText, nickName }) => {
         display: flex;
         background-color: #548D54;
         color: black;
-        justify-content: space-between;
-        padding-left: 300px;
-        padding-right: 300px;
+        justify-content: space-evenly;
+        white-space: nowrap;
         padding-top: 30px;
         padding-bottom: 15px;
         align-items: flex-end;
