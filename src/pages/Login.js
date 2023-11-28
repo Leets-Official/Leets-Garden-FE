@@ -23,9 +23,10 @@ const BackGround = styled.div`
     right: 0;
     bottom: 0;
     z-index: -1;
-    background: url('/images/sproutBack.png');
+    background: url('/images/5423403.jpg') no-repeat;
     background-size: cover;
-    opacity: 0.5;
+    background-position: center;
+    opacity: 0.7;
 `;
 
 const Login = () => {
