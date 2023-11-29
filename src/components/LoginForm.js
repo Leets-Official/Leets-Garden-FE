@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
+import moment from 'moment';
+import {useCookie, useCookies} from 'react-cookie';
 
 const Input = styled.input`
     background: transparent;
@@ -76,18 +79,20 @@ const LoginForm = () => {
 
     const navigate = useNavigate();
     
-    const userNameRef = useRef();
+    const usernameRef = useRef();
     const passwordRef = useRef();
 
-    const [userName, setuserName] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const [cookies, setCookie, removeCookie] = useCookies();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (userName.length < 1) {
+        if (username.length < 1) {
             window.alert('학번을 입력해주세요.')
-            userNameRef.current.focus();
+            usernameRef.current.focus();
             return ;
         }
         if (password.length < 1) {
@@ -95,13 +100,29 @@ const LoginForm = () => {
             passwordRef.current.focus();
             return ;
         }
+
+        const loginToken = await axios.post('http://3.39.24.69:8080/login', {username, password});
+        if (loginToken.data.result) {
+            const expires = moment().add(1, 'hours').toDate();
+            console.log(expires)
+            setCookie('token', loginToken.data.token, {path: '/', expires: expires, secure: true });
+            setCookie('name', loginToken.data.name, {path: '/', expires: expires, secure: true });
+            setCookie('username', loginToken.data.username, {path: '/', expires: expires, secure: true });
+            setCookie('fieldType', loginToken.data.fieldType, {path: '/', expires: expires, secure: true });
+            setCookie('roles', loginToken.data.roles, {path: '/', expires: expires, secure: true });
+            setCookie('message', loginToken.data.message, {path: '/', expires: expires, secure: true });
+        } else {
+            window.alert('username 혹은 password 가 올바르지 않습니다.');
+            return ;
+        }
+    
     }
 
 
     return (
         <StyledLoginForm>
             <Text>Login</Text>
-            <Input type='text' value={userName} ref={userNameRef} name='username' placeholder='username' onChange={(e) => { setuserName(e.target.value) }} />
+            <Input type='text' value={username} ref={usernameRef} name='username' placeholder='username' onChange={(e) => { setUsername(e.target.value) }} />
             <Input type='password' value={password} ref={passwordRef} name='password' placeholder='password' onChange={(e) => { setPassword(e.target.value) }} />
             <LoginButton onClick={handleSubmit}>Login</LoginButton>
         </StyledLoginForm>
