@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import DayStudyList from './components/DayStudyList';
+import DayStudyList from './components/TodayList';
 import StudyList from './components/StudyList';
 function App() {
   return (

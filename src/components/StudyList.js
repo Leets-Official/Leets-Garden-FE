@@ -5,30 +5,38 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Study from "./Study";
 
-const StyledH2 = styled.h2`
-  font-family: "Jua", sans-serif;
-  font-size: 50px;
-`;
 const StyledSlider = styled(Slider)`
-  .slick-next:before, .slick-prev:before {
+  .slick-next:before,
+  .slick-prev:before {
     color: #548d54;
-    font-size: 30px;
+    font-size: 35px;
   }
-  .slick-dots li button:before
-    {
-        font-size: 20px;
-        line-height: 20px;
-        color: #548d54;
-    }
+  .slick-dots li button:before {
+    font-size: 20px;
+    line-height: 20px;
+    color: #548d54;
+  }
   width: 1700px;
 `;
 
 const StudyListBox = styled.div`
-  margin-bottom: 60px;
+  margin: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 `;
+
+const mockStudy = {
+  meetingName: "ZeroBack FE 스터디",
+  meetingPlace: "ai공학관 508호",
+  meetingDay: "목요일 17시 30분",
+  isattended: true,
+};
 
 const StudyList = () => {
   const studyCnt = 10;
@@ -36,25 +44,26 @@ const StudyList = () => {
     arrows: true,
     dots: true,
     speed: 600,
-    slidesToShow: 4,
-    slidesToScroll: 1,
     centerMode: true,
-    centerPadding: "60px",
+    slidesToShow: 3 ,
+    slidesToScroll: 1,
   };
 
   const ShowStudies = () => {
     const studies = [];
     let i = 0;
     while (i < studyCnt) {
-      studies.push(<Study content={`${i}번째 study`} />);
+      studies.push(<Study content={mockStudy} />);
       i++;
     }
     return studies;
   };
+  
   return (
     <StudyListBox>
-      <StyledH2>예정된 스터디 : {studyCnt}개</StyledH2>
-      <StyledSlider {...settings} >{ShowStudies()}</StyledSlider>
+      <div>
+      <StyledSlider {...settings}>{ShowStudies()}</StyledSlider>
+      </div>
     </StudyListBox>
   );
 };
