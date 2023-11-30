@@ -5,8 +5,9 @@ import styled from 'styled-components'
 const Header = ({ leftText, middleText, nickName }) => {
     const Header = styled.div`
         display: flex;
-        background-color: #548D54;
-        color: black;
+        background-color: rgba(84, 141, 84, .5);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .9);
+        color: rgba(0, 0, 0, .7);
         justify-content: space-evenly;
         white-space: nowrap;
         padding-top: 30px;
