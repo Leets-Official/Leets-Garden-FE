@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header';
-import DayStudyList from './components/TodayList';
 import StudyList from './components/StudyList';
+import TodayList from './components/TodayList';
 function App() {
   return (
     <div className="App">
@@ -9,7 +9,7 @@ function App() {
       middleText={'새싹 키우기'}
       nickName={'front'} />
       <StudyList/>
-      <DayStudyList/>
+      <TodayList/>
     </div>
   );
 }

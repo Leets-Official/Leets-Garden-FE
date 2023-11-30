@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import Today from "./Today";
 
@@ -23,26 +24,35 @@ const Title = styled.div`
   color: #8c8c8c;
 `;
 
-const mockStudy = {
-  meetingName: "zeroBack FE 스터디",
-  meetingPlace: "ai공학관 508호",
-  meetingDay: "목요일 17시 30분",
-};
-const mockStudy2 = {
-  meetingName: "Leets 정기 모임",
-  meetingPlace: "전자정보도서관 그룹스터디룸C",
-  meetingDay: "월요일 17시 30분",
-};
-
 const TodayList = () => {
+  const [studyData, setStudyData] = useState([]);
+  const [studies, setStudies] = useState([]);
+  useEffect(() => {
+    const getStudies = async () => {
+      try {
+        const res = await axios.get("http://3.39.24.69:8080/meeting-weekly/today");
+        setStudyData(res.data);
+        console.log("오늘해당되는거 가져오기 결과", res.data);
+      } catch (error) {
+        console.error("스터디 오늘자 오류 발생:", error);
+      }
+    };
+    getStudies();
+  }, []);
+  useEffect(() => {
+    const updatedStudies = studyData.map(study => (
+      <Today key={study.meetingResponse.id} content={study.meetingResponse} />
+    ));
+    setStudies(updatedStudies);
+  }, [studyData]);
+
   return (
     <div>
       <Title>
-        TODAY
+        오늘 스터디 목록
       </Title>
       <TodayBox>
-        <Today content={mockStudy} />
-        <Today content={mockStudy2} />
+        {studies}
       </TodayBox>
     </div>
   );

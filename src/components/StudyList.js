@@ -1,6 +1,7 @@
-import React from "react";
-import Slider from "react-slick";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Study from "./Study";
@@ -19,10 +20,17 @@ const StyledSlider = styled(Slider)`
   width: 1700px;
 `;
 
+const Title = styled.div`
+  margin-left: 30px;
+  font-size: 35px;
+  color: #8c8c8c;
+  font-family: "Jua", sans-serif;
+`;
+
 const StudyListBox = styled.div`
   margin: 20px;
   padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,40 +39,56 @@ const StudyListBox = styled.div`
   border-radius: 20px;
 `;
 
-const mockStudy = {
-  meetingName: "ZeroBack FE 스터디",
-  meetingPlace: "ai공학관 508호",
-  meetingDay: "목요일 17시 30분",
-  isattended: true,
-};
-
+const StudyListBox2 = styled.div`
+  display: flex;
+  column-gap: 30px;
+  justify-content: space-around;
+`;
 const StudyList = () => {
-  const studyCnt = 10;
+  const [studyData, setStudyData] = useState([]);
+  const [studies, setStudies] = useState([]);
   const settings = {
     arrows: true,
     dots: true,
     speed: 600,
-    centerMode: true,
-    slidesToShow: 3 ,
+    slidesToShow: 3,
     slidesToScroll: 1,
   };
+  useEffect(() => {
+    const getStudies = async () => {
+      try {
+        const res = await axios.get("http://3.39.24.69:8080/meeting-weekly");
+        setStudyData(res.data);
+      } catch (error) {
+        console.error("스터디 전체 조회 오류 발생:", error);
+      }
+    };
+    getStudies();
+  }, []);
 
-  const ShowStudies = () => {
-    const studies = [];
+  useEffect(() => {
     let i = 0;
-    while (i < studyCnt) {
-      studies.push(<Study content={mockStudy} />);
+    const updatedStudies = [];
+    while (i < studyData.length) {
+      updatedStudies.push(<Study content={studyData[i].meetingResponse} />);
       i++;
     }
-    return studies;
-  };
-  
+    setStudies(updatedStudies);
+  }, [studyData]);
+
   return (
-    <StudyListBox>
-      <div>
-      <StyledSlider {...settings}>{ShowStudies()}</StyledSlider>
-      </div>
-    </StudyListBox>
+    <div>
+      <Title>스터디 목록</Title>
+      <StudyListBox>
+        <div>
+        {studies.length <= 3 ? (
+            <StudyListBox2>{studies}</StudyListBox2>
+          ) : (
+            <StyledSlider {...settings}>{studies}</StyledSlider>
+          )}
+        </div>
+      </StudyListBox>
+    </div>
   );
 };
 export default StudyList;

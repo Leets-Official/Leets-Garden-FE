@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import DashBoard from "../components/DashBoard";
+import Attendance from "../components/Attendance";
 import Header from "../components/Header";
 import StudyList from "../components/StudyList";
 import TodayList from "../components/TodayList";
@@ -19,7 +19,7 @@ const Main = () => {
       <StudyList/>
       <TDBox>
         <TodayList/>
-        <DashBoard/>
+        <Attendance/>
       </TDBox>
     </div>
   );
