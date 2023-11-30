@@ -33,6 +33,7 @@ const LoginButton = styled.button`
     padding-top: 10px;
     padding-bottom: 10px;
     margin: 10px;
+    margin-top: 20px;
     font-family: 'Jua', sans-serif;
     font-size: 20px;
     cursor: pointer;
@@ -73,6 +74,16 @@ const Text = styled.p`
 const Image = styled.img`
     width: 70px;
     margin-bottom: 20px;
+`;
+
+const SaveUsername = styled.input`
+
+`;
+
+const Label = styled.label`
+    margin-left: 20px;
+    font-family: 'Jua', sans-serif;
+    color: rgba(0, 0, 0, 0.7);
 `;
 
 const LoginForm = () => {
@@ -124,6 +135,7 @@ const LoginForm = () => {
             <Text>Login</Text>
             <Input type='text' value={username} ref={usernameRef} name='username' placeholder='username' onChange={(e) => { setUsername(e.target.value) }} />
             <Input type='password' value={password} ref={passwordRef} name='password' placeholder='password' onChange={(e) => { setPassword(e.target.value) }} />
+            <Label><SaveUsername type='checkbox'></SaveUsername>아이디 저장</Label>
             <LoginButton onClick={handleSubmit}>Login</LoginButton>
         </StyledLoginForm>
     );
