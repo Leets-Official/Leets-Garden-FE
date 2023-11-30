@@ -29,8 +29,6 @@ const Title = styled.div`
 
 const StudyListBox = styled.div`
   margin: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

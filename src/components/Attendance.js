@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import moment from "moment";
 
 const AttendanceBox = styled.div`
   display: flex;
@@ -26,6 +27,7 @@ const Title = styled.div`
 
 const EachAttendance = styled.div`
   display: flex;
+  align-items: center;
   column-gap: 10px;
   font-size: 22px;
   color: #8c8c8c;
@@ -33,15 +35,19 @@ const EachAttendance = styled.div`
 
 const DateBox = styled.div`
   display: flex;
-  border-radius: 13px;
+  border-radius: 10px;
   justify-content: center;
   align-items: center;
-  width: 24px;
-  height: 24px;
-  color: black;
-  background-color: #e2e2e2;
-  font-size: 10px;
+  width: 32px;
+  height: 28px;
+  color: ${(props) => (props.isAttended !=='ABSENCE' ? "white" : "black")};
+  background-color: ${(props) => (props.isAttended !=='ABSENCE' ? "#548d54" : "#e2e2e2")};
+  font-size: 14px;
+  padding: 2px;
 `;
+
+const Dates = styled.div`
+`
 
 const Select = styled.select`
   font-size: 20px;
@@ -66,33 +72,37 @@ const Attendance = () => {
         const res = await axios.get("http://3.39.24.69:8080/meeting-weekly");
         setStudyOptions(res.data);
       } catch (error) {
+        console.log(error, "주간 스터디 가져오는데 error발생");
       }
     };
     getStudyOption();
-  }, []); 
+  }, []);
 
   useEffect(() => {
-    let id = selectedStudy
     const getAttendance = async () => {
       try {
-        const res = await axios.get(`http://3.39.24.69:8080/meeting-weekly/all/${id}`);
+        const res = await axios.get(
+          `http://3.39.24.69:8080/meeting-weekly/all/${selectedStudy}`
+        );
         setAttendanceData(res.data);
       } catch (error) {
+        console.log(error, "잔디밭 가져오는데 error발생");
       }
     };
-    getAttendance();
+    if (selectedStudy) {
+      getAttendance();
+    }
   }, [selectedStudy]);
 
-  const handleStudyChange = (event) => {
+  const selectStudy = (event) => {
     setSelectedStudy(event.target.value);
   };
-  console.log(selectedStudy);
-  
+
   return (
     <div>
       <Title>출석현황</Title>
       <AttendanceBox>
-        <Select value={selectedStudy} onChange={handleStudyChange}>
+        <Select value={selectedStudy} onChange={selectStudy}>
           <option value="" disabled>Select a study</option>
           {studyOptions.map((study) => (
             <option key={study.meetingResponse.id} value={study.meetingResponse.id}>
@@ -105,8 +115,11 @@ const Attendance = () => {
             {attendanceData.map((attendance) => (
               <EachAttendance key={attendance.userId}>
                 {attendance.name}
-                <DateBox>{attendance.attendanceDetailsList[0].meetingDate}</DateBox>
-                {}
+                <Dates>
+                  {attendance.attendanceDetailsList.map((details, index) => (
+                    <DateBox key={index} isAttended={details.attendanceType}>{moment(details.meetingDate).format("MM.DD")}</DateBox>
+                  ))}
+                </Dates>
               </EachAttendance>
             ))}
           </AllAttendances>
