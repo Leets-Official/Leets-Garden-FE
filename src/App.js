@@ -1,12 +1,18 @@
-import './App.css';
-import Header from './components/Header';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
+import Login from './pages/Login';
+import Main from './pages/Main';
+
 function App() {
   return (
-    <div className="App">
-      <Header leftText={'Leets Garden'} 
-      middleText={'새싹 키우기'}
-      nickName={'front'} />
-    </div>
+    <CookiesProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/main' element={<Main />} />
+        </Routes>
+      </BrowserRouter>
+    </CookiesProvider>
   );
 }
 
