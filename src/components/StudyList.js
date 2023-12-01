@@ -42,6 +42,20 @@ const StudyListBox2 = styled.div`
   column-gap: 30px;
   justify-content: space-around;
 `;
+
+const NullBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1700px;
+  height: 180px;
+  color: #8c8c8c;
+  font-size: 80px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-family: "Jua", sans-serif;
+`;
+
 const StudyList = () => {
   const [studyData, setStudyData] = useState([]);
   const [studies, setStudies] = useState([]);
@@ -79,10 +93,14 @@ const StudyList = () => {
       <Title>스터디 목록</Title>
       <StudyListBox>
         <div>
-        {studies.length <= 3 ? (
-            <StudyListBox2>{studies}</StudyListBox2>
+          {studies.length > 0 ? (
+            studies.length <= 3 ? (
+              <StudyListBox2>{studies}</StudyListBox2>
+            ) : (
+              <StyledSlider {...settings}>{studies}</StyledSlider>
+            )
           ) : (
-            <StyledSlider {...settings}>{studies}</StyledSlider>
+            <NullBox>이런! 예정된 스터디가 없습니다.</NullBox>
           )}
         </div>
       </StudyListBox>
