@@ -112,8 +112,8 @@ const LoginForm = () => {
             return ;
         }
 
-        const loginToken = await axios.post('http://3.39.24.69:8080/login', {username, password});
-        if (loginToken.data.result) {
+        const loginToken = await axios.post('http://3.39.24.69:8080/login', {username, password}, {validateStatus: false});
+        if (loginToken.status === 200) {
             const expires = moment().add(1, 'hours').toDate();
             console.log(expires)
             setCookie('token', loginToken.data.token, {path: '/', expires: expires, secure: true });
@@ -123,9 +123,11 @@ const LoginForm = () => {
             setCookie('roles', loginToken.data.roles, {path: '/', expires: expires, secure: true });
             setCookie('message', loginToken.data.message, {path: '/', expires: expires, secure: true });
             navigate('/main')
-        } else {
-            window.alert('username 혹은 password 가 올바르지 않습니다.');
+        } else if (loginToken.status == 404) {
+            window.alert('사용자에서 해당하는 username 이 존재하지 않습니다.');
             return ;
+        } else if (loginToken.status == 401) {
+            window.alert('비밀번호가 올바르지 않습니다.');
         }
     
     }
