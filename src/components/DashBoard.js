@@ -1,4 +1,4 @@
-// //폐기예정
+//폐기예정 혹시 모를 사용에 대비해 남겨둠
 // import React from "react";
 // import styled from "styled-components";
 
