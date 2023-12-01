@@ -26,6 +26,16 @@ const Title = styled.div`
   color: #8c8c8c;
 `;
 
+const NullBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #8c8c8c;
+  font-size: 60px;
+  font-family: "Jua", sans-serif;
+  margin-top: 20px;
+`;
+
 const TodayList = () => {
   const [studyData, setStudyData] = useState([]);
   const [studies, setStudies] = useState([]);
@@ -61,7 +71,11 @@ const TodayList = () => {
   return (
     <div>
       <Title>오늘 스터디 목록</Title>
-      <TodayBox>{studies}</TodayBox>
+      <TodayBox>{studies.length > 0 ? (
+          studies
+        ) : (
+          <NullBox>오늘은 스터디 없는 날</NullBox>
+        )}</TodayBox>
     </div>
   );
 };
