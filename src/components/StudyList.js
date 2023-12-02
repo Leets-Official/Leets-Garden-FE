@@ -50,7 +50,7 @@ const NullBox = styled.div`
   width: 1700px;
   height: 180px;
   color: #8c8c8c;
-  font-size: 80px;
+  font-size: 60px;
   margin-top: 30px;
   margin-bottom: 30px;
   font-family: "Jua", sans-serif;
