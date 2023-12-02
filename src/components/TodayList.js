@@ -53,7 +53,6 @@ const TodayList = () => {
           }
         );
         setStudyData(res.data);
-        console.log("오늘해당되는거 가져오기 결과", res.data);
       } catch (error) {
         console.error("스터디 오늘자 오류 발생:", error);
       }

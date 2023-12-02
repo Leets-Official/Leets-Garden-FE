@@ -54,6 +54,7 @@ const Dates = styled.div`
 
 const Select = styled.select`
   font-size: 20px;
+  height: 25px;
   font-family: "Jua", sans-serif;
 `;
 const AllAttendances = styled.div`
@@ -82,7 +83,6 @@ const Attendance = () => {
         }
         );
         setStudyOptions(res.data);
-        console.log("주간 스터디 가져오기 성공");
       } catch (error) {
         console.log(error, "주간 스터디 가져오는데 error발생");
       }
@@ -102,7 +102,6 @@ const Attendance = () => {
           }
         );
         setAttendanceData(res.data);
-        console.log("잔디밭 가져오기 성공");
       } catch (error) {
         console.log(error, "잔디밭 가져오는데 error발생");
       }
