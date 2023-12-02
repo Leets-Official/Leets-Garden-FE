@@ -7,14 +7,14 @@ import { useCookies } from "react-cookie";
 const TodayBox = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
   justify-content: flex-start;
   align-items: center;
+  row-gap: 25px;
   width: 700px;
   height: 360px;
+  border-radius: 10px;
   margin: 20px;
   padding: 10px;
-  row-gap: 25px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
 `;
@@ -67,7 +67,6 @@ const TodayList = () => {
     ));
     setStudies(updatedStudies);
   }, [studyData]);
-  console.log(studyData);
   return (
     <div>
       <Title>오늘 스터디 목록</Title>

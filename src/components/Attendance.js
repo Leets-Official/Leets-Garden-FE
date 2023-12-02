@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import moment from "moment";
+import { useCookies } from "react-cookie";
 
 const AttendanceBox = styled.div`
   display: flex;
@@ -12,17 +13,19 @@ const AttendanceBox = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 1100px;
   height: 360px;
-  border-radius: 10px;
-  padding: 10px;
   margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
   font-size: 30px;
+  overflow-y: auto;
 `;
 
 const Title = styled.div`
   margin-left: 30px;
+  margin-top: 6px;
   font-size: 35px;
-  color: #8c8c8c;
   font-family: "Jua", sans-serif;
+  color: #8c8c8c;
 `;
 
 const EachAttendance = styled.div`
@@ -65,26 +68,41 @@ const Attendance = () => {
   const [attendanceData, setAttendanceData] = useState([]);
   const [studyOptions, setStudyOptions] = useState([]);
   const [selectedStudy, setSelectedStudy] = useState("");
+  const [cookies] = useCookies();
+  const token = cookies.token;
 
   useEffect(() => {
     const getStudyOption = async () => {
       try {
-        const res = await axios.get("http://3.39.24.69:8080/meeting-weekly");
+        const res = await axios.get('http://3.39.24.69:8080/meeting/all',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+        );
         setStudyOptions(res.data);
+        console.log("주간 스터디 가져오기 성공");
       } catch (error) {
         console.log(error, "주간 스터디 가져오는데 error발생");
       }
     };
     getStudyOption();
-  }, []);
+  }, [attendanceData, token]);
 
   useEffect(() => {
     const getAttendance = async () => {
       try {
         const res = await axios.get(
-          `http://3.39.24.69:8080/meeting-weekly/all/${selectedStudy}`
+          `http://3.39.24.69:8080/meeting-weekly/all/${selectedStudy}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         setAttendanceData(res.data);
+        console.log("잔디밭 가져오기 성공");
       } catch (error) {
         console.log(error, "잔디밭 가져오는데 error발생");
       }
@@ -92,7 +110,7 @@ const Attendance = () => {
     if (selectedStudy) {
       getAttendance();
     }
-  }, [selectedStudy]);
+  }, [selectedStudy, token]);
 
   const selectStudy = (event) => {
     setSelectedStudy(event.target.value);
@@ -105,8 +123,8 @@ const Attendance = () => {
         <Select value={selectedStudy} onChange={selectStudy}>
           <option value="" disabled>Select a study</option>
           {studyOptions.map((study) => (
-            <option key={study.meetingResponse.id} value={study.meetingResponse.id}>
-              {study.meetingResponse.meetingName}
+            <option key={study.id} value={study.id}>
+              {study.name}
             </option>
           ))}
         </Select>
