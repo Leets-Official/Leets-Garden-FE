@@ -68,7 +68,7 @@ const TodayList = () => {
   }, [studyData]);
   return (
     <div>
-      <Title>오늘 스터디 목록</Title>
+      <Title>오늘 모임 목록</Title>
       <TodayBox>{studies.length > 0 ? (
           studies
         ) : (
