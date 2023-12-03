@@ -115,7 +115,6 @@ const LoginForm = () => {
         const loginToken = await axios.post('http://3.39.24.69:8080/login', {username, password}, {validateStatus: false});
         if (loginToken.status === 200) {
             const expires = moment().add(1, 'hours').toDate();
-            console.log(expires)
             setCookie('token', loginToken.data.token, {path: '/', expires: expires, secure: true });
             setCookie('name', loginToken.data.name, {path: '/', expires: expires, secure: true });
             setCookie('username', loginToken.data.username, {path: '/', expires: expires, secure: true });
@@ -136,8 +135,8 @@ const LoginForm = () => {
     return (
         <StyledLoginForm>
             <Text>Login</Text>
-            <Input type='text' value={username} ref={usernameRef} name='username' placeholder='username' onChange={(e) => { setUsername(e.target.value) }} />
-            <Input type='password' value={password} ref={passwordRef} name='password' placeholder='password' onChange={(e) => { setPassword(e.target.value) }} />
+            <Input type='text' ref={usernameRef} name='username' placeholder='username' onChange={(e) => { setUsername(e.target.value) }} />
+            <Input type='password' ref={passwordRef} name='password' placeholder='password' onChange={(e) => { setPassword(e.target.value) }} />
             <Label><SaveUsername type='checkbox'></SaveUsername>아이디 저장</Label>
             <LoginButton onClick={handleSubmit}>Login</LoginButton>
         </StyledLoginForm>
