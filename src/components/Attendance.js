@@ -53,9 +53,13 @@ const Dates = styled.div`
 `
 
 const Select = styled.select`
-  font-size: 20px;
-  height: 25px;
   font-family: "Jua", sans-serif;
+  text-align: center;
+  font-size: 24px;
+  height: 32px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 `;
 const AllAttendances = styled.div`
   display: flex;
@@ -117,10 +121,10 @@ const Attendance = () => {
 
   return (
     <div>
-      <Title>출석현황</Title>
+      <Title>출석 현황</Title>
       <AttendanceBox>
         <Select value={selectedStudy} onChange={selectStudy}>
-          <option value="" disabled>Select a study</option>
+          <option value="" disabled>조회 할 모임 선택</option>
           {studyOptions.map((study) => (
             <option key={study.id} value={study.id}>
               {study.name}

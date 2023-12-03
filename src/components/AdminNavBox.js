@@ -5,6 +5,7 @@ import AddStudy from "./Admin/AddStudy";
 import AdminButton from "./AdminButton";
 import ApproveStudy from "./Admin/ApproveStudy";
 import EditStudy from "./Admin/EditStudy";
+import AddUser from "./Admin/AddUser";
 
 const Title = styled.div`
   font-family: "Jua", sans-serif;
@@ -58,7 +59,7 @@ const ModalTitle = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 50px;
-  height: 15%;
+  height: 20%;
   width: 100%;
   padding-top: 10px;
   background-color: rgba(84, 141, 84, .5);
@@ -68,32 +69,9 @@ const ModalTitle = styled.div`
 const ModalBody = styled.div`
   display: flex;
   width: 100%;
-  height: 75%;
+  height: 80%;
 `;
 
-const ModalFooter = styled.div`
-  display: flex;
-  align-items:center;
-  justify-content: center;
-  column-gap: 120px;
-  width: 100%;
-  height: 15%;
-`;
-const Button = styled.button`
-  cursor: pointer;
-  font-family: "Jua", sans-serif;
-  font-size: 45px;
-  width: 30%;
-  height: 70%;
-  border: none;
-  border-radius: 14px;
-  color: rgba(84, 141, 84, .5);
-  transition: all 1s ease;
-  &:hover {
-    background-color: rgba(84, 141, 84, .5);
-    color: white;
-  }
-`;
 
 const AdminNavBox = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -111,17 +89,17 @@ const AdminNavBox = () => {
   const getModalInfo = () => {
     switch (selectedButton) {
       case "회원추가":
-        return <AddStudy />;
+        return <AddUser />;
       case "회원조회":
         return <AddStudy />;
       case "출석체크":
         return <AddStudy />;
       case "모임생성":
-        return <AddStudy />;
+        return <AddStudy closeModal={closeModal}/>;
       case "모임수정":
-        return <EditStudy />;
+        return <EditStudy closeModal={closeModal}/>;
       case "모임승인":
-        return <ApproveStudy />;
+        return <ApproveStudy closeModal={closeModal}/>;
       default:
         return null;
     }
@@ -129,7 +107,7 @@ const AdminNavBox = () => {
 
   return (
     <div>
-      <Title>스터디 관리</Title>
+      <Title>모임 관리</Title>
       <TodayBox>
         <AdminButton text={"회원추가"} onClick={() => switchModal("회원추가")}/>
         <AdminButton text={"회원조회"} onClick={() => switchModal("회원조회")}/>
@@ -140,12 +118,9 @@ const AdminNavBox = () => {
       </TodayBox>
       {isModalOpen && (
         <ModalBackground onClick={closeModal}>
-          <ModalBox>
+          <ModalBox onClick={(e) => e.stopPropagation()}>
             <ModalTitle>{selectedButton}</ModalTitle>
             <ModalBody>{getModalInfo()}</ModalBody>
-            <ModalFooter>
-              <Button onClick={closeModal}>닫기</Button>
-            </ModalFooter>
           </ModalBox>
         </ModalBackground>
       )}

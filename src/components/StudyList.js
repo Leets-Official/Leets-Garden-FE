@@ -90,7 +90,7 @@ const StudyList = () => {
 
   return (
     <div>
-      <Title>스터디 목록</Title>
+      <Title>전체 모임 목록</Title>
       <StudyListBox>
         <div>
           {studies.length > 0 ? (

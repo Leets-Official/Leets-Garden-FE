@@ -6,8 +6,9 @@ const StyledButton = styled.button`
   font-family: "Jua", sans-serif;
   font-size: 45px;
   width: 30%;
-  height: 70%;
+  height: 100px;
   border: none;
+  padding: 10px;
   border-radius: 14px;
   color: rgba(84, 141, 84, .5);
   transition: all 1s ease;
