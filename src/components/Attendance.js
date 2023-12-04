@@ -50,6 +50,8 @@ const DateBox = styled.div`
 `;
 
 const Dates = styled.div`
+display: flex;
+column-gap: 10px;
 `
 
 const Select = styled.select`
@@ -114,7 +116,7 @@ const Attendance = () => {
       getAttendance();
     }
   }, [selectedStudy, token]);
-
+console.log(attendanceData);
   const selectStudy = (event) => {
     setSelectedStudy(event.target.value);
   };

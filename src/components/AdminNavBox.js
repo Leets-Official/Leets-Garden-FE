@@ -5,7 +5,6 @@ import AddStudy from "./Admin/AddStudy";
 import AdminButton from "./AdminButton";
 import ApproveStudy from "./Admin/ApproveStudy";
 import EditStudy from "./Admin/EditStudy";
-import AddUser from "./Admin/AddUser";
 
 const Title = styled.div`
   font-family: "Jua", sans-serif;
@@ -89,7 +88,7 @@ const AdminNavBox = () => {
   const getModalInfo = () => {
     switch (selectedButton) {
       case "회원추가":
-        return <AddUser />;
+        return <AddStudy />;
       case "회원조회":
         return <AddStudy />;
       case "출석체크":
