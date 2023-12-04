@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useNavigate } from 'react-router-dom';
 
 
 const FormBox = styled.div`
@@ -105,7 +104,6 @@ const Option = styled.option`
 const AddStudy = ({ closeModal }) => {
   const [cookies] = useCookies();
   const token = cookies.token;
-  const navigate = useNavigate();
   const [userList, setUserList] = useState([]);
   const [formData, setFormData] = useState({
     meetingName: "",
@@ -226,7 +224,7 @@ const AddStudy = ({ closeModal }) => {
         </SelectBox>
       </Form>
       <ModalFooter>
-        <Button onClick={addNewStudy}>추가</Button>
+        <Button onClick={addNewStudy}>생성하기</Button>
         <Button onClick={closeModal}>닫기</Button>
       </ModalFooter>
     </FormBox>

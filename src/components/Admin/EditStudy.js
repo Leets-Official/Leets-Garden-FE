@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 
 const FormBox = styled.div`
   display: flex;
@@ -107,7 +106,6 @@ border-bottom: 0.3px solid rgba(84, 141, 84, 0.5);;
 const EditStudy = ({ closeModal }) => {
   const [cookies] = useCookies();
   const token = cookies.token;
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     meetingName: "",
     meetingPlace: "",
@@ -127,6 +125,7 @@ const EditStudy = ({ closeModal }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          withCredentials: true,
         }
         );
         setStudyOptions(res.data);
@@ -147,6 +146,7 @@ const EditStudy = ({ closeModal }) => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
+            withCredentials: true,
           }
         );
         setUserList(res.data);
@@ -165,6 +165,7 @@ const EditStudy = ({ closeModal }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+        withCredentials: true,
         }
         );
         setStudyInfo(res.data);
@@ -199,6 +200,7 @@ const EditStudy = ({ closeModal }) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        withCredentials: true,
       });
       console.log("수정 성공");
       closeModal();
@@ -267,7 +269,7 @@ const EditStudy = ({ closeModal }) => {
         </SelectBox>
       </Form>
       <ModalFooter>
-        <Button onClick={EditNewStudy}>수정완료</Button>
+        <Button onClick={EditNewStudy}>수정하기</Button>
         <Button onClick={closeModal}>닫기</Button>
       </ModalFooter>
     </FormBox>
