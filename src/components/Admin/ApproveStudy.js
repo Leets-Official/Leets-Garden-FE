@@ -31,6 +31,7 @@ const Input = styled.input`
 const Select = styled.select`
   font-family: "Jua", sans-serif;
   font-size: 30px;
+  color: #555555;
   text-align: center;
   width: 360px;
   height: 40px;
