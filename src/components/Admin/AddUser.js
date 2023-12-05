@@ -63,9 +63,8 @@ const AddUser = ({closeModal}) => {
     const [cookies] = useCookies();
     const navigate = useNavigate();
 
-    const handleAddUser = async (e) => {
-        e.preventDefault();
-        const res = await axios.post('http://3.39.24.69:8080/register', {username, password, name, fieldType},  {validateStatus: false}, {
+    const handleAddUser = async () => {
+        const res = await axios.post('http://3.39.24.69:8080/signup', {username, password, name, fieldType},  {validateStatus: false}, {
             headers: {
                 Authorization: `Bearer ${cookies.token}`,
             },

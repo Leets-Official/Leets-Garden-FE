@@ -47,10 +47,18 @@ const Button = styled.button`
   border-radius: 14px;
   color: rgba(84, 141, 84, .5);
   transition: all 1s ease;
-  &:hover {
-    background-color: rgba(84, 141, 84, .5);
-    color: white;
-  }
+`;
+const CompletedButton = styled.button`
+  cursor: pointer;
+  font-family: "Jua", sans-serif;
+  font-size: 25px;
+  width: 20%;
+  height: 100%;
+  border: none;
+  border-radius: 14px;
+  background-color: rgba(84, 141, 84, .5);
+  color: white;
+  transition: all 1s ease;
 `;
 
 const AttendanceHeader = styled.div`
@@ -95,51 +103,67 @@ const UserAttendance = styled.div`
 `;
 
 const AttendanceCheck = ({ closeModal }) => {
-    const [username, setUsername] = useState();
     const [cookies] = useCookies();
     const [studyOption, setStudyOption] = useState([]);
     const [userList, setUserList] = useState([]);
-    const [selectedStudy, setSelectedStudy] = useState("");
+    const [selectedStudy, setSelectedStudy] = useState();
     const [showUserList, setShowUserList] = useState(false);
+    const [allData, setAllData] = useState([]);
     const token = cookies.token;
     const navigate = useNavigate();
 
-    const handleAttendanceCheck = async (e) => {
-        e.preventDefault();
-        const params = { username: username };
-        const res = await axios.get('http://3.39.24.69:8080/meeting/all-users', { withCredentials: true }, {
-            headers: {
-                Authorization: `Bearer ${cookies.token}`,
-            },
-        });
-        if (res.status === 200) {
-            window.alert(res.data.message);
-            console.log(res);
-            navigate('/admin');
-        } else if (res.status == 404) {
-            window.alert(res.data.message);
-            return;
-        }
-    }
-
     const selectStudy = (event) => {
-        setSelectedStudy(event.target.value);
+        setSelectedStudy(parseInt(event.target.value));
     };
 
-    const inquiryStudy = async (e) => {
-        const res = await axios.get(`http://3.39.24.69:8080/meeting/${selectedStudy}`);
-        setUserList(res.data.userList);
+    const inquiryStudy = () => {
+        console.log(selectedStudy);
+        const filterData = allData.filter((data) => parseInt(selectedStudy) === data.meetingResponse.id);
+        console.log(filterData)
+        setUserList(filterData[0].userAttendanceResponses);
         setShowUserList(true);
     };
 
+    const attendanceProcess = async (id) => {
+        console.log("출석체크")
+        if (window.confirm('출석체크 하시겠습니까?')) {
+            const res = await axios.patch(`http://3.39.24.69:8080/attendance/${id}`, { newAttendanceType: "ATTENDANCE" }, { ValidityState: false }, {
+                headers: {
+                    Authorization: `Bearer ${cookies.token}`,
+                },
+            });
+            setShowUserList(false);
+            setShowUserList(true);
+        }
+    }
+    const absenceProcess = async (id) => {
+        if (window.confirm('결석처리 하시겠습니까?')) {
+            const res = await axios.patch(`http://3.39.24.69:8080/attendance/${id}`, { newAttendanceType: "ABSENCE" }, { ValidityState: false }, {
+                headers: {
+                    Authorization: `Bearer ${cookies.token}`,
+                },
+            });
+            setShowUserList(true);
+        }
+    }
+
     useEffect(() => {
         const getStudyOption = async () => {
-            const res = await axios.get('http://3.39.24.69:8080/meeting/all');
-            setStudyOption(res.data);
-            setSelectedStudy(res.data[0].id);
+            const nameList = [];
+            const res = await axios.get('http://3.39.24.69:8080/meeting-weekly');
+            setAllData(res.data);
+            res.data.forEach(element => {
+                const push = {
+                    name: element.meetingResponse.meetingName,
+                    id: element.meetingResponse.id,
+                }
+                nameList.push(push);
+            });
+            setStudyOption(nameList);
+            setSelectedStudy(nameList[0].id);
         }
         getStudyOption();
-    }, [token])
+    },[showUserList, token])
 
     return (
         <FormBox>
@@ -157,9 +181,11 @@ const AttendanceCheck = ({ closeModal }) => {
                 <AttendanceBody>
                     {userList.map((user) => (
                         <AttendanceCol>
-                            <UserAttendance key={user.id}>{user.username}</UserAttendance>
-                            <UserAttendance key={user.id}>{user.roles}</UserAttendance>
-                            <Button>출석처리</Button>
+                            <UserAttendance key={user.attendanceId}>{user.name}</UserAttendance>
+                            {user.attendanceType === "ABSENCE" ?
+                                <Button onClick={() => attendanceProcess(user.attendanceId)}>출석처리</Button> :
+                                <CompletedButton onClick={() => absenceProcess(user.attendanceId)}>출석완료</CompletedButton>
+                            }
                         </AttendanceCol>
                     ))}
                 </AttendanceBody>}
