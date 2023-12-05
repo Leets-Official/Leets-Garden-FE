@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import styled from "styled-components";
 import AddStudy from "./Admin/AddStudy";
+import AddUser from "./Admin/AddUser"
 import AdminButton from "./AdminButton";
 import ApproveStudy from "./Admin/ApproveStudy";
 import EditStudy from "./Admin/EditStudy";
+import InquiryUser from "./Admin/InquiryUser";
+import AttendanceCheck from "./Admin/AttendanceCheck";
 
 const Title = styled.div`
   font-family: "Jua", sans-serif;
@@ -88,11 +91,11 @@ const AdminNavBox = () => {
   const getModalInfo = () => {
     switch (selectedButton) {
       case "회원추가":
-        return <AddStudy />;
+        return <AddUser closeModal={closeModal} />;
       case "회원조회":
-        return <AddStudy />;
+        return <InquiryUser closeModal={closeModal} />;
       case "출석체크":
-        return <AddStudy />;
+        return <AttendanceCheck closeModal={closeModal} />;
       case "모임생성":
         return <AddStudy closeModal={closeModal}/>;
       case "모임수정":
