@@ -35,7 +35,7 @@ const CloseButton = styled.button`
   font-family: "Jua", sans-serif;
   font-size: 25px;
   width: 20%;
-  height: ${props => props.showUserList ? '80%' : '15%'};
+  height: ${props => props.showUserList ? '60%' : '11.5%'};
   border: none;
   border-radius: 14px;
   color: rgba(84, 141, 84, .5);
@@ -209,7 +209,9 @@ const AttendanceCheck = ({ closeModal }) => {
                 <AttendanceBody>
                     {userList.map((user) => (
                         <AttendanceCol>
+                            <UserAttendance key={user.attendanceId}>{user.username}</UserAttendance>
                             <UserAttendance key={user.attendanceId}>{user.name}</UserAttendance>
+                            <UserAttendance key={user.attendanceId}>{user.fieldType}</UserAttendance>
                             {user.attendanceType === "ABSENCE" ?
                                 <Button onClick={() => attendanceProcess(user.attendanceId)}>출석처리</Button> :
                                 <CompletedButton onClick={() => absenceProcess(user.attendanceId)}>출석완료</CompletedButton>
