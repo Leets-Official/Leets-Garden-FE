@@ -11,31 +11,12 @@ const FormBox = styled.div`
     height: 100%;
 `
 
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-`
-
-const Input = styled.input`
-    font-family: "Jua", sans-serif;
-    font-size: 40px;
-    width: 400px;
-    height: 80px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-`
-
 const ModalFooter = styled.div`
   display: flex;
-  align-items:center;
+  align-items: end;
   justify-content: center;
-  column-gap: 120px;
-  width: 80%;
-  height: 15%;
+  height: ${props => props.showUserList ? '20%' : '100%'};
+  margin-bottom: 10px;
 `;
 const Button = styled.button`
   cursor: pointer;
@@ -47,6 +28,30 @@ const Button = styled.button`
   border-radius: 14px;
   color: rgba(84, 141, 84, .5);
   transition: all 1s ease;
+  background-color: white;
+`;
+const CloseButton = styled.button`
+  cursor: pointer;
+  font-family: "Jua", sans-serif;
+  font-size: 25px;
+  width: 20%;
+  height: ${props => props.showUserList ? '80%' : '15%'};
+  border: none;
+  border-radius: 14px;
+  color: rgba(84, 141, 84, .5);
+`;
+
+const InquiryButton = styled.button`
+  cursor: pointer;
+  font-family: "Jua", sans-serif;
+  font-size: 25px;
+  width: 20%;
+  height: 100%;
+  border: 1.5px solid #ececec ;
+  border-radius: 14px;
+  color: white;
+  transition: all 1s ease;
+  background-color: rgba(84, 141, 84, .5);
 `;
 const CompletedButton = styled.button`
   cursor: pointer;
@@ -86,10 +91,10 @@ const Select = styled.select`
 const AttendanceBody = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     font-size: 20px;
-    border-top: 2px solid rgba(84, 141, 84, .5);
+    height: 80%;
     overflow-y: auto;
+    margin-bottom: 20px;
 `;
 
 const AttendanceCol = styled.div`
@@ -98,15 +103,19 @@ const AttendanceCol = styled.div`
     padding-right: 30px;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgba(84, 141, 84, .5);
+    border: none;
+    background-color: #ececec;
+    border-radius: 30px;
     padding-left: 100px;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin: 10px;
 `;
 
 const UserAttendance = styled.div`
-    margin-top: 10px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
 `;
 
 const AttendanceCheck = ({ closeModal }) => {
@@ -135,9 +144,7 @@ const AttendanceCheck = ({ closeModal }) => {
     useEffect(() => {
         if (allData.length > 0) {
             const filterData = allData.filter((data) => parseInt(selectedStudy) === data.meetingResponse.id);
-            console.log(filterData[0]?.userAttendanceResponses);
-            setUserList(filterData[0]?.userAttendanceResponses);
-            setShowUserList(true);
+            setUserList(filterData[0].userAttendanceResponses);
         }
     }, [allData]);
 
@@ -171,6 +178,7 @@ const AttendanceCheck = ({ closeModal }) => {
         const getStudyOption = async () => {
             const nameList = [];
             const res = await axios.get('http://3.39.24.69:8080/meeting-weekly');
+            console.log(res.data);
             setAllData(res.data);
             res.data.forEach(element => {
                 const push = {
@@ -195,7 +203,7 @@ const AttendanceCheck = ({ closeModal }) => {
                         </option>
                     ))}
                 </Select>
-                <Button onClick={inquiryStudy}>조회</Button>
+                <InquiryButton onClick={inquiryStudy}>조회</InquiryButton>
             </AttendanceHeader>
             {showUserList &&
                 <AttendanceBody>
@@ -208,7 +216,11 @@ const AttendanceCheck = ({ closeModal }) => {
                             }
                         </AttendanceCol>
                     ))}
-                </AttendanceBody>}
+                </AttendanceBody>
+            }
+            <ModalFooter showUserList={showUserList}>
+                <CloseButton showUserList={showUserList} onClick={closeModal}>닫기</CloseButton>
+            </ModalFooter>
         </FormBox>
     );
 };
