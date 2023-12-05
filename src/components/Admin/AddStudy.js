@@ -40,6 +40,7 @@ const InputBox = styled.div`
 const Select = styled.select`
   font-family: "Jua", sans-serif;
   font-size: 30px;
+  color: #555555;
   width: 400px;
   height: 220px;
   border: none;
@@ -111,7 +112,7 @@ const AddStudy = ({ closeModal }) => {
     meetingDay: "",
     userList: [],
   });
-
+console.log(formData);
   useEffect(() => {
     const getUserList = async () => {
       try {

@@ -63,6 +63,7 @@ const StudyList = () => {
     arrows: true,
     dots: true,
     speed: 600,
+    centerMode: true,
     slidesToShow: 3,
     slidesToScroll: 1,
   };

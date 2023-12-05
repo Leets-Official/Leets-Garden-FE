@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import moment from "moment";
 import { useCookies } from "react-cookie";
 
 const AttendanceBox = styled.div`
@@ -36,6 +35,11 @@ const EachAttendance = styled.div`
   color: #8c8c8c;
 `;
 
+const PersonalBox = styled.div`
+  display: flex;
+  width: 4em;
+`;
+
 const DateBox = styled.div`
   display: flex;
   border-radius: 10px;
@@ -47,11 +51,20 @@ const DateBox = styled.div`
   background-color: ${(props) => (props.isAttended !=='ABSENCE' ? "#548d54" : "#e2e2e2")};
   font-size: 14px;
   padding: 2px;
+  
+`;
+const DateBoxText = styled.span`
+  padding: 5px;
+  width: 100px;
+  color: ${(props) => (props.isAttended !=='ABSENCE' ? "#548d54" : "#e2e2e2")};
+  &:hover{
+    color: ${(props) => (props.isAttended !=='ABSENCE' ? "#e2e2e2" : "#548d54")};
+  }
 `;
 
 const Dates = styled.div`
 display: flex;
-column-gap: 10px;
+column-gap: 6px;
 `
 
 const Select = styled.select`
@@ -66,7 +79,7 @@ const Select = styled.select`
 const AllAttendances = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   row-gap: 6px;
   margin: 10px;
@@ -116,7 +129,9 @@ const Attendance = () => {
       getAttendance();
     }
   }, [selectedStudy, token]);
+
 console.log(attendanceData);
+
   const selectStudy = (event) => {
     setSelectedStudy(event.target.value);
   };
@@ -137,11 +152,21 @@ console.log(attendanceData);
           <AllAttendances>
             {attendanceData.map((attendance) => (
               <EachAttendance key={attendance.userId}>
+                <PersonalBox>
                 {attendance.name}
+                </PersonalBox>
                 <Dates>
-                  {attendance.attendanceDetailsList.map((details, index) => (
-                    <DateBox key={index} isAttended={details.attendanceType}>{moment(details.meetingDate).format("MM.DD")}</DateBox>
-                  ))}
+                  {(attendance.attendanceDetailsList).map((details, index) => {
+                    console.log("details:", details);
+                    return (
+                      <DateBox key={index} isAttended={details.attendanceType}>
+                        <DateBoxText isAttended={details.attendanceType}>
+                          {`${details.meetingDate[1]}.${details.meetingDate[2]}`}
+                        </DateBoxText>
+                      </DateBox>
+                    );
+                  }
+                  )}
                 </Dates>
               </EachAttendance>
             ))}

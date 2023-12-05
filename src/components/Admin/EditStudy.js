@@ -27,6 +27,7 @@ const Input = styled.input`
   height: 80px;
   border: none;
   border-radius: 15px;
+  padding-left: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 `;
 
@@ -38,6 +39,7 @@ const InputBox = styled.div`
 
 const Select = styled.select`
   font-family: "Jua", sans-serif;
+  color: #555555;
   font-size: 30px;
   width: 400px;
   height:220px;
@@ -50,6 +52,7 @@ const Select = styled.select`
 const Select2 = styled.select`
   font-family: "Jua", sans-serif;
   font-size: 25px;
+  color: #555555;
   text-align: center;
   width: 300px;
   height:40px;

@@ -18,7 +18,7 @@ const Header = ({ leftText, middleText, nickName }) => {
     `;
 
     const LeftText = styled.div`
-        font-size: 60px;
+        font-size: 30px;
         width: 34%;
         margin-left: 5%;
 
@@ -29,7 +29,7 @@ const Header = ({ leftText, middleText, nickName }) => {
     `;
 
     const MiddleText = styled.div`
-        font-size: 60px;
+        font-size: 30px;
         width: 33%;
 
         @media screen and (max-width: 1200px) {
