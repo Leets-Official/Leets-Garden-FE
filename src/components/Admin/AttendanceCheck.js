@@ -68,13 +68,19 @@ const AttendanceHeader = styled.div`
     padding-top: 20px;
     padding-bottom: 20px;
     padding-right: 20px;
+    column-gap: 20px;
 `;
 
 const Select = styled.select`
-  font-size: 20px;
-  height: 25px;
   font-family: "Jua", sans-serif;
-  margin-right: 20px;
+  font-size: 25px;
+  color: #555555;
+  text-align: center;
+  width: 300px;
+  height:100%;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 `;
 
 const AttendanceBody = styled.div`
@@ -99,7 +105,8 @@ const AttendanceCol = styled.div`
 `;
 
 const UserAttendance = styled.div`
-    width: 33%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 `;
 
 const AttendanceCheck = ({ closeModal }) => {
@@ -117,23 +124,34 @@ const AttendanceCheck = ({ closeModal }) => {
     };
 
     const inquiryStudy = () => {
-        console.log(selectedStudy);
         const filterData = allData.filter((data) => parseInt(selectedStudy) === data.meetingResponse.id);
-        console.log(filterData)
         setUserList(filterData[0].userAttendanceResponses);
         setShowUserList(true);
     };
+    const refreshData = async () => {
+        const res = await axios.get('http://3.39.24.69:8080/meeting-weekly');
+        setAllData(res.data);
+    };
+    useEffect(() => {
+        if (allData.length > 0) {
+            const filterData = allData.filter((data) => parseInt(selectedStudy) === data.meetingResponse.id);
+            console.log(filterData[0]?.userAttendanceResponses);
+            setUserList(filterData[0]?.userAttendanceResponses);
+            setShowUserList(true);
+        }
+    }, [allData]);
 
     const attendanceProcess = async (id) => {
-        console.log("출석체크")
         if (window.confirm('출석체크 하시겠습니까?')) {
-            const res = await axios.patch(`http://3.39.24.69:8080/attendance/${id}`, { newAttendanceType: "ATTENDANCE" }, { ValidityState: false }, {
+            const res = await axios.patch(`http://3.39.24.69:8080/attendance/${id}`, { newAttendanceType: "ATTENDANCE" }, {
+                validateState: false,
                 headers: {
                     Authorization: `Bearer ${cookies.token}`,
                 },
             });
-            setShowUserList(false);
-            setShowUserList(true);
+            if (res.status === 200) {
+                refreshData();
+            }
         }
     }
     const absenceProcess = async (id) => {
@@ -143,7 +161,9 @@ const AttendanceCheck = ({ closeModal }) => {
                     Authorization: `Bearer ${cookies.token}`,
                 },
             });
-            setShowUserList(true);
+            if (res.status === 200) {
+                refreshData();
+            }
         }
     }
 
@@ -163,7 +183,7 @@ const AttendanceCheck = ({ closeModal }) => {
             setSelectedStudy(nameList[0].id);
         }
         getStudyOption();
-    },[showUserList, token])
+    }, [showUserList, token])
 
     return (
         <FormBox>
