@@ -171,12 +171,13 @@ console.log(formData);
     const allNames = userList.map((user) => {
       return user.name;
     });
+    console.log("allNames는",allNames);
     setFormData({
       ...formData,
-      [userList]: allNames,
+      userList: allNames,
     });
   };
-
+  console.log(userList);
   return (
     <FormBox>
       <Form>
