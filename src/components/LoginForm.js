@@ -109,32 +109,26 @@ const LoginForm = () => {
       setCookie("token", loginToken.data.token, {
         path: "/",
         expires: expires,
-        secure: true,
       });
       setCookie("name", loginToken.data.name, {
         path: "/",
         expires: expires,
-        secure: true,
       });
       setCookie("username", loginToken.data.username, {
         path: "/",
         expires: expires,
-        secure: true,
       });
       setCookie("fieldType", loginToken.data.fieldType, {
         path: "/",
         expires: expires,
-        secure: true,
       });
       setCookie("roles", loginToken.data.roles, {
         path: "/",
         expires: expires,
-        secure: true,
       });
       setCookie("message", loginToken.data.message, {
         path: "/",
         expires: expires,
-        secure: true,
       });
     if(loginToken.data.roles==='ADMIN'){
         navigate('/admin')
