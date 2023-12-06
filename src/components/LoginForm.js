@@ -130,12 +130,12 @@ const LoginForm = () => {
         path: "/",
         expires: expires,
       });
-    if(loginToken.data.roles==='ADMIN'){
-        navigate('/admin')
-    }else{
+    // if(loginToken.data.roles==='ADMIN'){
+    //     navigate('/admin')
+    // }else{
         navigate("/main");
 
-    } 
+    // } 
     } else if (loginToken.status == 404) {
       window.alert("사용자에서 해당하는 username 이 존재하지 않습니다.");
       return;
