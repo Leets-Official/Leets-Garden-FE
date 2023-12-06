@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 const Button = styled.button`
   cursor: pointer;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;

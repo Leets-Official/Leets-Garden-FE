@@ -21,8 +21,8 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  font-family: "Jua", sans-serif;
-  font-size: 36px;
+font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;  font-size: 36px;
   width: 400px;
   height: 80px;
   border: none;
@@ -38,7 +38,8 @@ const InputBox = styled.div`
 `;
 
 const Select = styled.select`
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   color: #555555;
   font-size: 30px;
   width: 400px;
@@ -50,7 +51,8 @@ const Select = styled.select`
 `;
 
 const Select2 = styled.select`
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   font-size: 25px;
   color: #555555;
   text-align: center;
@@ -88,7 +90,8 @@ const ModalFooter = styled.div`
 
 const Button = styled.button`
   cursor: pointer;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   font-size: 45px;
   width: 30%;
   height: 70%;
@@ -103,16 +106,18 @@ const Button = styled.button`
 `;
 
 const Option = styled.option`
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   text-align: center;
   border-bottom: 0.3px solid rgba(84, 141, 84, 0.5);
 `;
 
 const Allselect = styled.button`
   cursor: pointer;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   margin-left: 20px;
   font-size: 20px;
-  font-weight: 100;
   width: 100px;
   height: 30px;
   border: none;
@@ -269,13 +274,13 @@ const EditStudy = ({ closeModal }) => {
       <EditBox>
         수정 할 모임을 선택
         <Select2 value={selectedStudy} onChange={selectStudy}>
-          <option value="" disabled>
+          <Option value="" disabled>
             조회 할 모임 선택
-          </option>
+          </Option>
           {studyOptions.map((study) => (
-            <option key={study.id} value={study.id}>
+            <Option key={study.id} value={study.id}>
               {study.name}
-            </option>
+            </Option>
           ))}
         </Select2>
       </EditBox>

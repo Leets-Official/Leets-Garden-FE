@@ -19,7 +19,8 @@ const Box = styled.div`
 const TodayBox = styled.div`
   border-radius: 10px;
   width: 600px;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   display: flex;
   flex-direction: column;
   justify-content: center;

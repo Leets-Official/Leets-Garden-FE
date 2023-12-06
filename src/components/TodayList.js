@@ -23,7 +23,8 @@ const Title = styled.div`
   margin-left: 30px;
   margin-top: 20px;
   font-size: 35px;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   color: #8c8c8c;
 `;
 
@@ -32,9 +33,10 @@ const NullBox = styled.div`
   justify-content: center;
   align-items: center;
   color: #8c8c8c;
-  font-size: 60px;
-  font-family: "Jua", sans-serif;
   margin-top: 20px;
+  font-size: 60px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
 `;
 
 const TodayList = () => {
