@@ -3,7 +3,6 @@ import styled from "styled-components";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
-
 const FormBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -112,7 +111,7 @@ const AddStudy = ({ closeModal }) => {
     meetingDay: "",
     userList: [],
   });
-console.log(formData);
+  console.log(formData);
   useEffect(() => {
     const getUserList = async () => {
       try {
@@ -151,8 +150,24 @@ console.log(formData);
     }
   };
 
+  const selectAll = (e) => {
+    e.preventDefault();
+    const allNames = userList.map((user) => {
+      return user.name;
+    });
+    console.log("allNames는", allNames);
+    setFormData({
+      ...formData,
+      userList: allNames,
+    });
+  };
+
   const addNewStudy = async (e) => {
     e.preventDefault();
+    if (!formData.meetingName || !formData.meetingPlace || !formData.meetingDay || formData.userList.length === 0) {
+      alert("필수 항목을 모두 작성해주세요.");
+      return;
+    }
     try {
       const res = await axios.post("http://3.39.24.69:8080/meeting", formData, {
         headers: {
@@ -166,17 +181,6 @@ console.log(formData);
     }
   };
 
-  const selectAll = (e) => {
-    e.preventDefault();
-    const allNames = userList.map((user) => {
-      return user.name;
-    });
-    console.log("allNames는",allNames);
-    setFormData({
-      ...formData,
-      userList: allNames,
-    });
-  };
   console.log(userList);
   return (
     <FormBox>

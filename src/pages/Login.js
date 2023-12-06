@@ -33,7 +33,6 @@ const Login = () => {
     return (
         <div>
             <Header leftText={'Leets Garden'}
-                middleText={'새싹 키우기'}
             />
             <BackGround />
             <StyledLogin>

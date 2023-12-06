@@ -25,8 +25,6 @@ const Admin = () => {
     <div>
       <Header
         leftText={"Leets Garden"}
-        middleText={"새싹 키우기"}
-        nickName={"front"}
       />
       <StudyList />
       {windowWidth <= 1200 && (

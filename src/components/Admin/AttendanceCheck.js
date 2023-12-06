@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useNavigate } from 'react-router-dom';
 
 const FormBox = styled.div`
     display: flex;
@@ -11,32 +10,6 @@ const FormBox = styled.div`
     height: 100%;
 `
 
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-`
-
-const Input = styled.input`
-    font-family: "Jua", sans-serif;
-    font-size: 40px;
-    width: 400px;
-    height: 80px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-`
-
-const ModalFooter = styled.div`
-  display: flex;
-  align-items:center;
-  justify-content: center;
-  column-gap: 120px;
-  width: 80%;
-  height: 15%;
-`;
 const Button = styled.button`
   cursor: pointer;
   font-family: "Jua", sans-serif;
@@ -117,7 +90,6 @@ const AttendanceCheck = ({ closeModal }) => {
     const [showUserList, setShowUserList] = useState(false);
     const [allData, setAllData] = useState([]);
     const token = cookies.token;
-    const navigate = useNavigate();
 
     const selectStudy = (event) => {
         setSelectedStudy(parseInt(event.target.value));
