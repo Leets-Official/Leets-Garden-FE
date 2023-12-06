@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const StudyBox = styled.div`
-  font-family: "Jua", sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
+font-weight: 700;
   border-radius: 10px;
   width: 450px;
   height: 180px;

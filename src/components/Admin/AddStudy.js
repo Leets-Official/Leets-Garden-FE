@@ -21,12 +21,14 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   font-size: 36px;
   width: 400px;
   height: 80px;
   border: none;
   border-radius: 15px;
+  padding-left: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 `;
 
@@ -37,7 +39,8 @@ const InputBox = styled.div`
 `;
 
 const Select = styled.select`
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   font-size: 30px;
   color: #555555;
   width: 400px;
@@ -66,7 +69,8 @@ const ModalFooter = styled.div`
 
 const Button = styled.button`
   cursor: pointer;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   font-size: 45px;
   width: 30%;
   height: 70%;
@@ -81,10 +85,10 @@ const Button = styled.button`
 `;
 const Allselect = styled.button`
   cursor: pointer;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   margin-left: 20px;
   font-size: 20px;
-  font-weight: 100;
   width: 100px;
   height: 30px;
   border: none;
@@ -97,6 +101,8 @@ const Allselect = styled.button`
   }
 `;
 const Option = styled.option`
+font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   text-align: center;
   border-bottom: 0.3px solid rgba(84, 141, 84, 0.5);
 `;

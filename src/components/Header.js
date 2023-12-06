@@ -14,8 +14,8 @@ const HeaderBox = styled.div`
   padding-bottom: 15px;
   margin-bottom: 15px;
   align-items: flex-end;
-  font-weight: 500;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   text-align: center;
 `;
 
@@ -44,7 +44,6 @@ const NickName = styled.div`
   font-size: 30px;
   width: 20%;
   margin-right: 5%;
-
   @media screen and (max-width: 1200px) {
     width: 0%;
     font-size: 0px;
@@ -53,8 +52,9 @@ const NickName = styled.div`
 `;
 const LogoutButton = styled.button`
   cursor: pointer;
-  font-family: "Jua", sans-serif;
-  font-size: 25px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
   width: 10%;
   border: none;
   border-radius: 14px;
@@ -77,7 +77,7 @@ const Sprout = styled.img`
   width: 40px;
 `;
 const Header = ({ leftText }) => {
-  const [cookies, removeAllCookies, removeCookie] = useCookies();
+  const [cookies, removeCookie] = useCookies();
   const name = cookies.name;
   const navigate = useNavigate();
   console.log(cookies);
@@ -88,9 +88,9 @@ const Header = ({ leftText }) => {
     removeCookie("fieldType");
     removeCookie("roles");
     removeCookie("message");
-    navigate("/login");
+    navigate("/");
   };
-  console.log(cookies);
+  console.log(name);
   return (
     <HeaderBox>
       <LeftText>
@@ -98,8 +98,8 @@ const Header = ({ leftText }) => {
         <Sprout src="images/sprout.png" />
       </LeftText>
       <MiddleText></MiddleText>
-      <NickName>{name ? `${name}님의 Garden` : "로그인을 해주세요"}</NickName>
-      {name ? <LogoutButton onClick={Logout}>로그아웃</LogoutButton> : ""}
+      <NickName>{name == "undefined" ? null : `${name}님의 Garden`}</NickName>
+      {name=='undefined' ? null : <LogoutButton onClick={Logout}>로그아웃</LogoutButton>}
     </HeaderBox>
   );
 };

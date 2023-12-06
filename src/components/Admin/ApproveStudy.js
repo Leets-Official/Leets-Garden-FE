@@ -17,7 +17,8 @@ const FormBox = styled.div`
 `;
 
 const Input = styled.input`
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   font-size: 32px;
   text-align: center;
   width: 360px;
@@ -29,7 +30,8 @@ const Input = styled.input`
 `;
 
 const Select = styled.select`
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   font-size: 30px;
   color: #555555;
   text-align: center;
@@ -45,6 +47,13 @@ const SelectBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const Option = styled.option`
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 0.3px solid rgba(84, 141, 84, 0.5);
 `;
 
 const EditBox = styled.div`
@@ -73,7 +82,8 @@ const ModalFooter = styled.div`
 
 const Button = styled.button`
   cursor: pointer;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   font-size: 45px;
   width: 30%;
   height: 70%;
@@ -179,13 +189,13 @@ const ApproveStudy = ({ closeModal }) => {
           <SelectBox>
             승인할 주간모임 선택
             <Select value={selectedStudyId} onChange={selectStudy}>
-              <option value="" disabled>
+              <Option value="" disabled>
                 조회 할 모임 선택
-              </option>
+              </Option>
               {studyOptions.map((study) => (
-                <option key={study.id} value={study.id}>
+                <Option key={study.id} value={study.id}>
                   {study.name}
-                </option>
+                </Option>
               ))}
             </Select>
           </SelectBox>

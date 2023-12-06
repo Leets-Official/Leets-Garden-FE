@@ -24,7 +24,8 @@ const Title = styled.div`
   margin-left: 30px;
   font-size: 35px;
   color: #8c8c8c;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
 `;
 
 const StudyListBox = styled.div`
@@ -53,7 +54,8 @@ const NullBox = styled.div`
   font-size: 60px;
   margin-top: 30px;
   margin-bottom: 30px;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
 `;
 
 const StudyList = () => {

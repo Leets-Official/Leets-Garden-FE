@@ -8,7 +8,8 @@ const AttendanceBox = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 1100px;
   height: 360px;
@@ -21,9 +22,10 @@ const AttendanceBox = styled.div`
 
 const Title = styled.div`
   margin-left: 30px;
-  margin-top: 6px;
+  margin-top: 20px;
   font-size: 35px;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   color: #8c8c8c;
 `;
 
@@ -37,16 +39,22 @@ const EachAttendance = styled.div`
 
 const PersonalBox = styled.div`
   display: flex;
-  width: 4em;
+  width: 90px;
 `;
+
+const Option = styled.option`
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+`;
+
 
 const DateBox = styled.div`
   display: flex;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  width: 32px;
-  height: 28px;
+  width: 34px;
+  height: 30px;
   color: ${(props) => (props.isAttended !=='ABSENCE' ? "white" : "black")};
   background-color: ${(props) => (props.isAttended !=='ABSENCE' ? "#548d54" : "#e2e2e2")};
   font-size: 14px;
@@ -68,10 +76,11 @@ column-gap: 6px;
 `
 
 const Select = styled.select`
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   text-align: center;
   font-size: 24px;
-  height: 32px;
+  height: 36px;
   border: none;
   border-radius: 15px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -141,11 +150,11 @@ console.log(attendanceData);
       <Title>출석 현황</Title>
       <AttendanceBox>
         <Select value={selectedStudy} onChange={selectStudy}>
-          <option value="" disabled>조회 할 모임 선택</option>
+          <Option value="" disabled>조회 할 모임 선택</Option>
           {studyOptions.map((study) => (
-            <option key={study.id} value={study.id}>
+            <Option key={study.id} value={study.id}>
               {study.name}
-            </option>
+            </Option>
           ))}
         </Select>
         {selectedStudy && (

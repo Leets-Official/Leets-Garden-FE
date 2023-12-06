@@ -16,6 +16,8 @@ const StyledLoginContent = styled.div`
     border: 3px solid rgba(255, 255, 255, .2);
     color: rgba(0, 0, 0, 0.7);
     padding: 20px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
     @media screen and (max-width: 1200px) {
         align-items: center;
         width: 400px;
@@ -25,13 +27,11 @@ const StyledLoginContent = styled.div`
 `;
 
 const SubContent = styled.div`
-    font-size: 50px;
-    font-family: 'Jua', sans-serif;
+    font-size: 40px;
 `;
 
 const MainContent = styled.div`
-    font-size: 60px;
-    font-family: 'Jua', sans-serif;
+    font-size: 50px;
 `;
 
 const LoginContent = () => {

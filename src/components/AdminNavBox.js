@@ -10,7 +10,8 @@ import InquiryUser from "./Admin/InquiryUser";
 import AttendanceCheck from "./Admin/AttendanceCheck";
 
 const Title = styled.div`
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   margin-left: 30px;
   font-size: 35px;
   color: #8c8c8c;
@@ -51,7 +52,8 @@ const ModalBox = styled.div`
   height: 80%;
   width: 60%;
   background: white;
-  font-family: "Jua", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 `;

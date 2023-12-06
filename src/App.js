@@ -9,7 +9,7 @@ function App() {
     <CookiesProvider>
       <BrowserRouter>
         <Routes>
-          <Route path='/login' element={<Login />} />
+          <Route path='/' element={<Login />} />
           <Route path='/main' element={<Main />} />
           <Route path='/admin' element={<Admin />} />
         </Routes>
