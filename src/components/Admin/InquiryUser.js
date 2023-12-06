@@ -8,7 +8,6 @@ const FormBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
     height: 100%;
 `
@@ -16,16 +15,18 @@ const FormBox = styled.div`
 const Form = styled.form`
   display: flex;
   justify-content: end;
-  align-items:center;
+  align-items: center;
   column-gap: 20px;
   height: 20%;
+  width: 100%;
+  margin-right: 50px;
 `
 
 const Input = styled.input`
     font-family: "Jua", sans-serif;
     font-size: 30px;
-    width: 400px;
-    height: 80%;
+    width: 200px;
+    height: 70%;
     padding-left: 20px;
     padding-right: 20px;
     border: none;
@@ -35,11 +36,11 @@ const Input = styled.input`
 
 const ModalFooter = styled.div`
   display: flex;
-  align-items:end;
+  align-items: end;
   justify-content: center;
-  column-gap: 120px;
-  width: 80%;
-  height: 20%;
+  height: ${props => props.showInquiry ? '20%' : '100%'};
+  width: 100%;
+  margin-bottom: 10px;
 `;
 const Button = styled.button`
   cursor: pointer;
@@ -48,7 +49,7 @@ const Button = styled.button`
   align-items: center;
   font-family: "Jua", sans-serif;
   font-size: 25px;
-  width: 50%;
+  width: 10%;
   height: 70%;
   border: none;
   border-radius: 14px;
@@ -62,16 +63,47 @@ const Button = styled.button`
   }
 `;
 
+const CloseButton = styled.button`
+  cursor: pointer;
+  font-family: "Jua", sans-serif;
+  font-size: 25px;
+  width: 20%;
+  height: ${props => props.showInquiry ? '60%' : '10%'};
+  border: none;
+  border-radius: 14px;
+  color: rgba(84, 141, 84, .5);
+`;
+
 const User = styled.div`
     display: flex;
     justify-content: space-evenly;
+    text-align: center;
     width: 100%;
     font-size: 30px;
-    height: 15%;
+    height: 30%;
 `;
 
 const UserInfo = styled.div`
+    width: 25%;
+`;
 
+const UserForm = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    color: rgba(84, 141, 84, .5);
+    width: 100%;
+    height: 30%;
+`;
+const InquiryForm = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 30px;
+    height: 100%;
 `;
 
 const InquiryUser = ({ closeModal }) => {
@@ -102,7 +134,6 @@ const InquiryUser = ({ closeModal }) => {
         });
         console.log(res);
         if (res.status === 200) {
-            window.alert(res.data.message);
             setUserInfo(res.data);
             setShowInquiry(true);
         } else if (res.status === 404) {
@@ -119,15 +150,23 @@ const InquiryUser = ({ closeModal }) => {
                 <Button onClick={handleInquiryUser}>조회</Button>
             </Form>
             {showInquiry &&
-                <User>
-                    <UserInfo>{userInfo.username}</UserInfo>
-                    <UserInfo>{userInfo.name}</UserInfo>
-                    <UserInfo>{userInfo.fieldType}</UserInfo>
-                    <UserInfo>{userInfo.roles}</UserInfo>
-                </User>
+                <InquiryForm>
+                    <UserForm>
+                        <UserInfo>학번</UserInfo>
+                        <UserInfo>이름</UserInfo>
+                        <UserInfo>분야</UserInfo>
+                        <UserInfo>권한</UserInfo>
+                    </UserForm>
+                    <User>
+                        <UserInfo>{userInfo.username}</UserInfo>
+                        <UserInfo>{userInfo.name}</UserInfo>
+                        <UserInfo>{userInfo.fieldType}</UserInfo>
+                        <UserInfo>{userInfo.roles}</UserInfo>
+                    </User>
+                </InquiryForm>
             }
-            <ModalFooter>
-                <Button onClick={closeModal}>닫기</Button>
+            <ModalFooter showInquiry={showInquiry}>
+                <CloseButton showInquiry={showInquiry} onClick={closeModal}>닫기</CloseButton>
             </ModalFooter>
         </FormBox>
     );
