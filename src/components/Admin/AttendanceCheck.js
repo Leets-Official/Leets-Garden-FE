@@ -93,7 +93,7 @@ const AttendanceBody = styled.div`
     flex-direction: column;
     font-size: 20px;
     height: 80%;
-    overflow-y: auto;
+    overflow-y: scroll;
     margin-bottom: 20px;
 `;
 
@@ -101,7 +101,7 @@ const AttendanceCol = styled.div`
     display: flex;
     padding-left: 30px;
     padding-right: 30px;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     border: none;
     background-color: #ececec;
@@ -115,7 +115,7 @@ const AttendanceCol = styled.div`
 const UserAttendance = styled.div`
     font-size: 20px;
     font-weight: bold;
-    margin: 10px;
+    text-align: center;
 `;
 
 const AttendanceCheck = ({ closeModal }) => {
@@ -178,7 +178,6 @@ const AttendanceCheck = ({ closeModal }) => {
         const getStudyOption = async () => {
             const nameList = [];
             const res = await axios.get('http://3.39.24.69:8080/meeting-weekly');
-            console.log(res.data);
             setAllData(res.data);
             res.data.forEach(element => {
                 const push = {
@@ -187,6 +186,7 @@ const AttendanceCheck = ({ closeModal }) => {
                 }
                 nameList.push(push);
             });
+            console.log(nameList)
             setStudyOption(nameList);
             setSelectedStudy(nameList[0].id);
         }
@@ -208,10 +208,12 @@ const AttendanceCheck = ({ closeModal }) => {
             {showUserList &&
                 <AttendanceBody>
                     {userList.map((user) => (
-                        <AttendanceCol>
-                            <UserAttendance key={user.attendanceId}>{user.username}</UserAttendance>
-                            <UserAttendance key={user.attendanceId}>{user.name}</UserAttendance>
-                            <UserAttendance key={user.attendanceId}>{user.fieldType}</UserAttendance>
+                        <AttendanceCol key={user.attendanceId}>
+                            <div>
+                                <UserAttendance>{user.username}</UserAttendance>
+                                <UserAttendance>{user.name}</UserAttendance>
+                            </div>
+                            <UserAttendance>{user.fieldType}</UserAttendance>
                             {user.attendanceType === "ABSENCE" ?
                                 <Button onClick={() => attendanceProcess(user.attendanceId)}>출석처리</Button> :
                                 <CompletedButton onClick={() => absenceProcess(user.attendanceId)}>출석완료</CompletedButton>
