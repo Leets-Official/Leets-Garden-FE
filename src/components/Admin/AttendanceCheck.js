@@ -11,31 +11,12 @@ const FormBox = styled.div`
     height: 100%;
 `
 
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-`
-
-const Input = styled.input`
-    font-family: "Jua", sans-serif;
-    font-size: 40px;
-    width: 400px;
-    height: 80px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-`
-
 const ModalFooter = styled.div`
   display: flex;
-  align-items:center;
+  align-items: end;
   justify-content: center;
-  column-gap: 120px;
-  width: 80%;
-  height: 15%;
+  height: ${props => props.showUserList ? '20%' : '100%'};
+  margin-bottom: 10px;
 `;
 const Button = styled.button`
   cursor: pointer;
@@ -47,6 +28,30 @@ const Button = styled.button`
   border-radius: 14px;
   color: rgba(84, 141, 84, .5);
   transition: all 1s ease;
+  background-color: white;
+`;
+const CloseButton = styled.button`
+  cursor: pointer;
+  font-family: "Jua", sans-serif;
+  font-size: 25px;
+  width: 20%;
+  height: ${props => props.showUserList ? '60%' : '11.5%'};
+  border: none;
+  border-radius: 14px;
+  color: rgba(84, 141, 84, .5);
+`;
+
+const InquiryButton = styled.button`
+  cursor: pointer;
+  font-family: "Jua", sans-serif;
+  font-size: 25px;
+  width: 20%;
+  height: 100%;
+  border: 1.5px solid #ececec ;
+  border-radius: 14px;
+  color: white;
+  transition: all 1s ease;
+  background-color: rgba(84, 141, 84, .5);
 `;
 const CompletedButton = styled.button`
   cursor: pointer;
@@ -86,27 +91,31 @@ const Select = styled.select`
 const AttendanceBody = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     font-size: 20px;
-    border-top: 2px solid rgba(84, 141, 84, .5);
-    overflow-y: auto;
+    height: 80%;
+    overflow-y: scroll;
+    margin-bottom: 20px;
 `;
 
 const AttendanceCol = styled.div`
     display: flex;
     padding-left: 30px;
     padding-right: 30px;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    border-bottom: 2px solid rgba(84, 141, 84, .5);
+    border: none;
+    background-color: #ececec;
+    border-radius: 30px;
     padding-left: 100px;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin: 10px;
 `;
 
 const UserAttendance = styled.div`
-    margin-top: 10px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
 `;
 
 const AttendanceCheck = ({ closeModal }) => {
@@ -135,9 +144,7 @@ const AttendanceCheck = ({ closeModal }) => {
     useEffect(() => {
         if (allData.length > 0) {
             const filterData = allData.filter((data) => parseInt(selectedStudy) === data.meetingResponse.id);
-            console.log(filterData[0]?.userAttendanceResponses);
-            setUserList(filterData[0]?.userAttendanceResponses);
-            setShowUserList(true);
+            setUserList(filterData[0].userAttendanceResponses);
         }
     }, [allData]);
 
@@ -179,6 +186,7 @@ const AttendanceCheck = ({ closeModal }) => {
                 }
                 nameList.push(push);
             });
+            console.log(nameList)
             setStudyOption(nameList);
             setSelectedStudy(nameList[0].id);
         }
@@ -195,20 +203,28 @@ const AttendanceCheck = ({ closeModal }) => {
                         </option>
                     ))}
                 </Select>
-                <Button onClick={inquiryStudy}>조회</Button>
+                <InquiryButton onClick={inquiryStudy}>조회</InquiryButton>
             </AttendanceHeader>
             {showUserList &&
                 <AttendanceBody>
                     {userList.map((user) => (
-                        <AttendanceCol>
-                            <UserAttendance key={user.attendanceId}>{user.name}</UserAttendance>
+                        <AttendanceCol key={user.attendanceId}>
+                            <div>
+                                <UserAttendance>{user.username}</UserAttendance>
+                                <UserAttendance>{user.name}</UserAttendance>
+                            </div>
+                            <UserAttendance>{user.fieldType}</UserAttendance>
                             {user.attendanceType === "ABSENCE" ?
                                 <Button onClick={() => attendanceProcess(user.attendanceId)}>출석처리</Button> :
                                 <CompletedButton onClick={() => absenceProcess(user.attendanceId)}>출석완료</CompletedButton>
                             }
                         </AttendanceCol>
                     ))}
-                </AttendanceBody>}
+                </AttendanceBody>
+            }
+            <ModalFooter showUserList={showUserList}>
+                <CloseButton showUserList={showUserList} onClick={closeModal}>닫기</CloseButton>
+            </ModalFooter>
         </FormBox>
     );
 };
