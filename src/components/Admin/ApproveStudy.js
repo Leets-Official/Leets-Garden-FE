@@ -94,24 +94,7 @@ const CalendarBox = styled.div`
   font-size: 18px;
   row-gap: 10px;
 `;
-const StyledCalendar = styled(Calendar)`
-  background: white;
-  /* & .react-calendar__navigation {
-    background: rgba(84, 141, 84, 0.5);
-    color: white;
-  };
-  & .react-calendar__tile--active {
-  background: rgba(84, 141, 84, 0.5);
-  color: white;
-};
-  & .react-calendar__tile--hasActive:enabled:hover{
-  background: rgba(84, 141, 84, 0.5);
-};
-& .react-calendar__tile--hasActive {
-  background: #5AD18F;
-}; */
 
-`;
 const ApproveStudy = ({ closeModal }) => {
   const today = new Date();
   const [cookies] = useCookies();
@@ -123,9 +106,6 @@ const ApproveStudy = ({ closeModal }) => {
   });
   const [studyOptions, setStudyOptions] = useState([]);
   const [selectedStudyId, setSelectedStudyId] = useState("");
-  const [meetingDate, setMeetingDate] = useState(
-    
-  );
 
   useEffect(() => {
     const getStudyOption = async () => {
@@ -150,12 +130,12 @@ const ApproveStudy = ({ closeModal }) => {
       meetingDate: moment(value).format("YYYY-MM-DD"),
     });
   };
-  
+
   const selectStudy = (event) => {
     setSelectedStudyId(event.target.value);
     setFormData({
       ...formData,
-      "meetingId": event.target.value,
+      meetingId: event.target.value,
     });
   };
 
@@ -191,7 +171,7 @@ const ApproveStudy = ({ closeModal }) => {
     }
   };
 
-  console.log(formData);  
+  console.log(formData);
   return (
     <FormBox>
       <EditBox>
@@ -220,7 +200,7 @@ const ApproveStudy = ({ closeModal }) => {
         <ColBox>
           날짜 선택
           <CalendarBox>
-          <StyledCalendar
+            <Calendar
               name="meetingDate"
               onChange={selectDate}
               value={formData.meetingDate}

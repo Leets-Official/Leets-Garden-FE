@@ -164,7 +164,12 @@ const AddStudy = ({ closeModal }) => {
 
   const addNewStudy = async (e) => {
     e.preventDefault();
-    if (!formData.meetingName || !formData.meetingPlace || !formData.meetingDay || formData.userList.length === 0) {
+    if (
+      !formData.meetingName ||
+      !formData.meetingPlace ||
+      !formData.meetingDay ||
+      formData.userList.length === 0
+    ) {
       alert("필수 항목을 모두 작성해주세요.");
       return;
     }
