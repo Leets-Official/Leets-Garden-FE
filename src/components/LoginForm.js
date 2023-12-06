@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import moment from 'moment';
-import {useCookie, useCookies} from 'react-cookie';
+import {useCookies} from 'react-cookie';
 
 const Input = styled.input`
     background: transparent;
@@ -70,12 +70,6 @@ const Text = styled.p`
     margin: 0;
     margin-bottom: 20px;
 `
-
-const Image = styled.img`
-    width: 70px;
-    margin-bottom: 20px;
-`;
-
 const SaveUsername = styled.input`
 
 `;
@@ -96,7 +90,7 @@ const LoginForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const [cookies, setCookie] = useCookies();
 
     const handleSubmit = async (e) => {
         e.preventDefault();

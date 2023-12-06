@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import "../../Calendar.css";
 import { useCookies } from "react-cookie";
 import styled from "styled-components";
 
@@ -94,25 +94,7 @@ const CalendarBox = styled.div`
   font-size: 18px;
   row-gap: 10px;
 `;
-const StyledCalendar = styled(Calendar)`
-   background: white;
-  font-family: "Jua", sans-serif;
-  & .react-calendar__navigation {
-    background: rgba(84, 141, 84, 0.5);
-    color: white;
-  };
-  & .react-calendar__tile--active {
-  background: rgba(84, 141, 84, 0.5);
-  color: white;
-};
-  & .react-calendar__tile--hasActive:enabled:hover{
-  background: rgba(84, 141, 84, 0.5);
-};
-& .react-calendar__tile--hasActive {
-  background: #5AD18F;
-};
 
-`;
 const ApproveStudy = ({ closeModal }) => {
   const today = new Date();
   const [cookies] = useCookies();
@@ -124,9 +106,6 @@ const ApproveStudy = ({ closeModal }) => {
   });
   const [studyOptions, setStudyOptions] = useState([]);
   const [selectedStudyId, setSelectedStudyId] = useState("");
-  const [meetingDate, setMeetingDate] = useState(
-    
-  );
 
   useEffect(() => {
     const getStudyOption = async () => {
@@ -144,9 +123,6 @@ const ApproveStudy = ({ closeModal }) => {
     };
     getStudyOption();
   }, [token]);
-  
-  console.log("선택한 스터디의 id", selectedStudyId);
-  console.log(meetingDate);
 
   const selectDate = (value) => {
     setFormData({
@@ -154,12 +130,12 @@ const ApproveStudy = ({ closeModal }) => {
       meetingDate: moment(value).format("YYYY-MM-DD"),
     });
   };
-  
+
   const selectStudy = (event) => {
     setSelectedStudyId(event.target.value);
     setFormData({
       ...formData,
-      "meetingId": event.target.value,
+      meetingId: event.target.value,
     });
   };
 
@@ -172,6 +148,10 @@ const ApproveStudy = ({ closeModal }) => {
 
   const ApproveNewStudy = async (e) => {
     e.preventDefault();
+    if (!formData.content || !formData.meetingId || !formData.meetingDate) {
+      alert("필수 항목을 모두 작성해주세요.");
+      return;
+    }
     try {
       const res = await axios.post(
         `http://3.39.24.69:8080/meeting-weekly`,
@@ -191,7 +171,7 @@ const ApproveStudy = ({ closeModal }) => {
     }
   };
 
-  console.log(formData);  
+  console.log(formData);
   return (
     <FormBox>
       <EditBox>
@@ -220,7 +200,7 @@ const ApproveStudy = ({ closeModal }) => {
         <ColBox>
           날짜 선택
           <CalendarBox>
-          <StyledCalendar
+            <Calendar
               name="meetingDate"
               onChange={selectDate}
               value={formData.meetingDate}

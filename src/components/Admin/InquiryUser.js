@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import styled from "styled-components";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useNavigate } from 'react-router-dom';
 
 const FormBox = styled.div`
     display: flex;
@@ -111,7 +110,6 @@ const InquiryUser = ({ closeModal }) => {
     const [cookies] = useCookies();
     const [showInquiry, setShowInquiry] = useState(false);
     const [userInfo, setUserInfo] = useState({});
-    const navigate = useNavigate();
     const usernameRef = useRef();
     const token = cookies.token;
 

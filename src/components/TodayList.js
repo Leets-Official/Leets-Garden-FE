@@ -21,6 +21,7 @@ const TodayBox = styled.div`
 
 const Title = styled.div`
   margin-left: 30px;
+  margin-top: 20px;
   font-size: 35px;
   font-family: "Jua", sans-serif;
   color: #8c8c8c;
