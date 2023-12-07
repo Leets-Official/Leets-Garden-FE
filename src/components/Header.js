@@ -40,8 +40,8 @@ const MiddleText = styled.div`
 
 const NickName = styled.div`
   font-size: 30px;
-  width: 10%;
-  margin-right: 5%;
+  width: 30%;
+  margin-right: 70px;
   @media screen and (max-width: 1200px) {
     width: 0%;
     font-size: 0px;
@@ -51,10 +51,11 @@ const NickName = styled.div`
 const LogoutButton = styled.button`
   cursor: pointer;
   padding-bottom: 3px;
+  margin-left: 40px;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 20px;
-  width: 6%;
+  width: 25%;
   border: none;
   border-radius: 12px;
   transition: all 1s ease;
@@ -62,7 +63,7 @@ const LogoutButton = styled.button`
   &:hover {
     color: white;
   }
-  margin-right: 30px;
+  margin-right: 0px;
 
   @media screen and (max-width: 1200px) {
     width: 0%;
@@ -100,11 +101,11 @@ const Header = ({ leftText }) => {
       <MiddleText></MiddleText>
       <NickName>
         {name == "undefined" ? null : `${name}님의 Garden`}
-        {name == "undefined" ? null :<Sprout src="images/leets.png" />}
+        {name == "undefined" ? null : <Sprout src="images/leets.png" />}
+        {name == "undefined" ? null : (
+          <LogoutButton onClick={Logout}>Logout</LogoutButton>
+        )}
       </NickName>
-      {name == "undefined" ? null : (
-        <LogoutButton onClick={Logout}>Logout</LogoutButton>
-      )}
     </HeaderBox>
   );
 };

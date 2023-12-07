@@ -17,7 +17,7 @@ const Form = styled.form`
   display: flex;
   row-gap: 20px;
   column-gap: 40px;
-  margin-bottom: 60px;
+  margin-bottom: 10px;
 `;
 
 const Input = styled.input`

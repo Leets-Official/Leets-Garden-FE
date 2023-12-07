@@ -59,7 +59,6 @@ const Option = styled.option`
 const EditBox = styled.div`
   display: flex;
   column-gap: 40px;
-  margin-bottom: 20px;
 `;
 
 const ColBox = styled.div`
@@ -68,7 +67,6 @@ const ColBox = styled.div`
   align-items: center;
   row-gap: 10px;
   font-size: 40px;
-  margin-bottom: 20px;
 `;
 
 const ModalFooter = styled.div`
