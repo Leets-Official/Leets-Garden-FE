@@ -5,7 +5,7 @@ const StudyBox = styled.div`
     font-family: "Noto Sans KR", sans-serif;
 font-weight: 700;
   border-radius: 10px;
-  width: 450px;
+  width: 100%;
   height: 180px;
   border: 2px solid #dcdcdc;
   font-size: 24px;
@@ -15,6 +15,7 @@ font-weight: 700;
   margin-bottom: 30px;
   transition: all 0.5s ease;
   align-items: flex-start;
+  text-align: center;
   &:hover {
     transform: scale(1.05);
     background-color: white;

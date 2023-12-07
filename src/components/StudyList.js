@@ -7,8 +7,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Study from "./Study";
 
 const StyledSlider = styled(Slider)`
+  display: flex;
+  width: 90%;
   .slick-next:before,
   .slick-prev:before {
+    display: flex;
+    justify-content: center;
     color: #548d54;
     font-size: 35px;
   }
@@ -17,7 +21,6 @@ const StyledSlider = styled(Slider)`
     line-height: 20px;
     color: #548d54;
   }
-  width: 1700px;
 `;
 
 const Title = styled.div`
@@ -36,6 +39,7 @@ const StudyListBox = styled.div`
   align-items: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
+  text-align: center;
 `;
 
 const StudyListBox2 = styled.div`
@@ -65,7 +69,7 @@ const StudyList = () => {
     arrows: true,
     dots: true,
     speed: 600,
-    centerMode: true,
+    centerMode: false,
     slidesToShow: 3,
     slidesToScroll: 1,
   };
@@ -95,7 +99,6 @@ const StudyList = () => {
     <div>
       <Title>전체 모임 목록</Title>
       <StudyListBox>
-        <div>
           {studies.length > 0 ? (
             studies.length <= 3 ? (
               <StudyListBox2>{studies}</StudyListBox2>
@@ -105,7 +108,6 @@ const StudyList = () => {
           ) : (
             <NullBox>이런! 예정된 스터디가 없습니다.</NullBox>
           )}
-        </div>
       </StudyListBox>
     </div>
   );
