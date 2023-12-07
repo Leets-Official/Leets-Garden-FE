@@ -9,7 +9,7 @@ const TodayBox = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  row-gap: 25px;
+  row-gap: 20px;
   width: 700px;
   height: 360px;
   border-radius: 10px;
