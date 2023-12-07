@@ -31,7 +31,7 @@ const LeftText = styled.div`
 const MiddleText = styled.div`
   font-size: 30px;
   width: 50%;
-  
+
   @media screen and (max-width: 1200px) {
     width: 0%;
     font-size: 0px;
@@ -72,8 +72,9 @@ const LogoutButton = styled.button`
 `;
 
 const Sprout = styled.img`
-  margin-left: 15px;
+  margin-left: 10px;
   width: 40px;
+  filter: opacity(0.5) drop-shadow(0 0 0 #228b22);
 `;
 const Header = ({ leftText }) => {
   const [cookies, removeCookie] = useCookies();
@@ -97,8 +98,13 @@ const Header = ({ leftText }) => {
         <Sprout src="images/sprout.png" />
       </LeftText>
       <MiddleText></MiddleText>
-      <NickName>{name == "undefined" ? null : `${name}님의 Garden`}</NickName>
-      {name=='undefined' ? null : <LogoutButton onClick={Logout}>Logout</LogoutButton>}
+      <NickName>
+        {name == "undefined" ? null : `${name}님의 Garden`}
+        {name == "undefined" ? null :<Sprout src="images/leets.png" />}
+      </NickName>
+      {name == "undefined" ? null : (
+        <LogoutButton onClick={Logout}>Logout</LogoutButton>
+      )}
     </HeaderBox>
   );
 };

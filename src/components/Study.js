@@ -26,6 +26,7 @@ font-weight: 700;
 const Title = styled.div`
   font-size: 35px;
   margin-left: 10px;
+  margin-top: 10px;
   color: #548d54;
 `;
 
