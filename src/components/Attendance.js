@@ -3,6 +3,10 @@ import styled from "styled-components";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
+const Box = styled.div`
+  width: 100%;
+`;
+
 const AttendanceBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,18 +15,18 @@ const AttendanceBox = styled.div`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 1100px;
+  width: 95%;
   height: 360px;
-  margin: 20px;
   padding: 10px;
   border-radius: 10px;
   font-size: 30px;
   overflow-y: auto;
+  margin-top: 20px;
 `;
 
 const Title = styled.div`
-  margin-left: 30px;
-  margin-top: 20px;
+display: flex;
+align-items: center;
   font-size: 35px;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
@@ -146,7 +150,7 @@ console.log(attendanceData);
   };
 
   return (
-    <div>
+    <Box>
       <Title>출석 현황</Title>
       <AttendanceBox>
         <Select value={selectedStudy} onChange={selectStudy}>
@@ -182,7 +186,7 @@ console.log(attendanceData);
           </AllAttendances>
         )}
       </AttendanceBox>
-    </div>
+    </Box>
   );
 };
 export default Attendance;
