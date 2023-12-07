@@ -19,9 +19,9 @@ const FormBox = styled.div`
 const Input = styled.input`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 0.7em;
   text-align: center;
-  width: 360px;
+  width: 85%;
   height: 60px;
   margin-top: 20px;
   border: none;
@@ -32,10 +32,10 @@ const Input = styled.input`
 const Select = styled.select`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 0.6em;
   color: #555555;
   text-align: center;
-  width: 360px;
+  width: 100%;
   height: 40px;
   border: none;
   border-radius: 15px;
@@ -84,7 +84,7 @@ const Button = styled.button`
   cursor: pointer;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 45px;
+  font-size: 2em;
   width: 30%;
   height: 70%;
   border: none;

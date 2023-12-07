@@ -22,7 +22,7 @@ const Form = styled.form`
 
 const Input = styled.input`
 font-family: "Noto Sans KR", sans-serif;
-  font-weight: 700;  font-size: 36px;
+  font-weight: 700;  font-size: 2em;
   width: 400px;
   height: 80px;
   border: none;
@@ -73,8 +73,9 @@ const SelectBox = styled.div`
 
 const EditBox = styled.div`
   display: flex;
+  margin-left: 40px;
+  column-gap: 60px;
   align-items: center;
-  column-gap: 20px;
   font-size: 30px;
   margin-bottom: 20px;
 `;
@@ -92,7 +93,7 @@ const Button = styled.button`
   cursor: pointer;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 45px;
+  font-size: 2em;
   width: 30%;
   height: 70%;
   border: none;

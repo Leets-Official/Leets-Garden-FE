@@ -24,11 +24,11 @@ const StyledSlider = styled(Slider)`
 `;
 
 const Title = styled.div`
-  margin-left: 30px;
-  font-size: 35px;
-  color: #8c8c8c;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
+  font-size: 35px;
+  margin-left: 30px;
+  color: #8c8c8c;
 `;
 
 const StudyListBox = styled.div`
@@ -69,7 +69,7 @@ const StudyList = () => {
     arrows: true,
     dots: true,
     speed: 600,
-    centerMode: false,
+    centerMode: true,
     slidesToShow: 3,
     slidesToScroll: 1,
   };
@@ -84,12 +84,13 @@ const StudyList = () => {
     };
     getStudies();
   }, []);
+  console.log(studyData);
 
   useEffect(() => {
     let i = 0;
     const updatedStudies = [];
     while (i < studyData.length) {
-      updatedStudies.push(<Study content={studyData[i].meetingResponse} />);
+      updatedStudies.push(<Study content={studyData[i].meetingResponse} date={studyData[i].meetingDate} />);
       i++;
     }
     setStudies(updatedStudies);
