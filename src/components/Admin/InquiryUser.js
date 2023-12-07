@@ -19,14 +19,15 @@ const Form = styled.form`
   height: 20%;
   width: 100%;
   margin-right: 50px;
+  margin-top: 10px;
 `;
 
 const Input = styled.input`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   width: 200px;
-  height: 70%;
+  height: 50px;
   padding-left: 20px;
   padding-right: 20px;
   border: none;
@@ -49,7 +50,7 @@ const Button = styled.button`
   align-items: center;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 20px;
   width: 10%;
   height: 70%;
   border: none;
