@@ -20,11 +20,11 @@ const TodayBox = styled.div`
 `;
 
 const Title = styled.div`
-  margin-left: 30px;
-  margin-top: 20px;
   font-size: 35px;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
+  margin-left: 30px;
+  margin-top: 20px;
   color: #8c8c8c;
 `;
 

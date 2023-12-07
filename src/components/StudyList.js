@@ -7,8 +7,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Study from "./Study";
 
 const StyledSlider = styled(Slider)`
+  display: flex;
+  width: 90%;
   .slick-next:before,
   .slick-prev:before {
+    display: flex;
+    justify-content: center;
     color: #548d54;
     font-size: 35px;
   }
@@ -17,15 +21,14 @@ const StyledSlider = styled(Slider)`
     line-height: 20px;
     color: #548d54;
   }
-  width: 1700px;
 `;
 
 const Title = styled.div`
-  margin-left: 30px;
-  font-size: 35px;
-  color: #8c8c8c;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
+  font-size: 35px;
+  margin-left: 30px;
+  color: #8c8c8c;
 `;
 
 const StudyListBox = styled.div`
@@ -36,6 +39,7 @@ const StudyListBox = styled.div`
   align-items: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
+  text-align: center;
 `;
 
 const StudyListBox2 = styled.div`
@@ -80,12 +84,13 @@ const StudyList = () => {
     };
     getStudies();
   }, []);
+  console.log(studyData);
 
   useEffect(() => {
     let i = 0;
     const updatedStudies = [];
     while (i < studyData.length) {
-      updatedStudies.push(<Study content={studyData[i].meetingResponse} />);
+      updatedStudies.push(<Study content={studyData[i].meetingResponse} date={studyData[i].meetingDate} />);
       i++;
     }
     setStudies(updatedStudies);
@@ -95,7 +100,6 @@ const StudyList = () => {
     <div>
       <Title>전체 모임 목록</Title>
       <StudyListBox>
-        <div>
           {studies.length > 0 ? (
             studies.length <= 3 ? (
               <StudyListBox2>{studies}</StudyListBox2>
@@ -105,7 +109,6 @@ const StudyList = () => {
           ) : (
             <NullBox>이런! 예정된 스터디가 없습니다.</NullBox>
           )}
-        </div>
       </StudyListBox>
     </div>
   );

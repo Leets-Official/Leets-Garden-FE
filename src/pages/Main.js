@@ -7,6 +7,7 @@ import TodayList from "../components/TodayList";
 
 const TDBox = styled.div`
   display: flex;
+  width: 100%;
 `;
 const Main = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

@@ -5,7 +5,7 @@ const StudyBox = styled.div`
     font-family: "Noto Sans KR", sans-serif;
 font-weight: 700;
   border-radius: 10px;
-  width: 450px;
+  width: 70%;
   height: 180px;
   border: 2px solid #dcdcdc;
   font-size: 24px;
@@ -15,6 +15,7 @@ font-weight: 700;
   margin-bottom: 30px;
   transition: all 0.5s ease;
   align-items: flex-start;
+  text-align: center;
   &:hover {
     transform: scale(1.05);
     background-color: white;
@@ -29,19 +30,22 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
   padding-top: 32px;
+  align-items: flex-start;
   margin-left: 10px;
   font-size: 24px;
 
 `;
 
 
-const Study = ({ content }) => {
+const Study = ({ content, date }) => {
   return (
     <StudyBox>
       <Title>{content.meetingName}</Title>
       <Content>
-        <div>{content.meetingDay}</div>
+        <div>{`${date[1]}월 ${date[2]}일`}</div>
         <div>{content.meetingPlace}</div>
       </Content>
     </StudyBox>

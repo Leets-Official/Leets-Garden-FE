@@ -3,6 +3,10 @@ import styled from "styled-components";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
+const Box = styled.div`
+  width: 100%;
+`;
+
 const AttendanceBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,19 +15,21 @@ const AttendanceBox = styled.div`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 95%;
   height: 360px;
-  margin: 20px;
   padding: 10px;
   border-radius: 10px;
   font-size: 30px;
   overflow-y: auto;
+  margin-top: 20px;
 `;
 
 const Title = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 35px;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  margin-left: 30px;
   margin-top: 20px;
   color: #8c8c8c;
 `;
@@ -46,7 +52,6 @@ const Option = styled.option`
   font-weight: 700;
 `;
 
-
 const DateBox = styled.div`
   display: flex;
   border-radius: 10px;
@@ -54,33 +59,26 @@ const DateBox = styled.div`
   align-items: center;
   width: 34px;
   height: 30px;
-  color: ${(props) => (props.isAttended !=='ABSENCE' ? "white" : "black")};
-  background-color: ${(props) => (props.isAttended !=='ABSENCE' ? "#548d54" : "#e2e2e2")};
+  color: ${(props) => (props.isAttended !== "ABSENCE" ? "white" : "black")};
+  background-color: ${(props) =>
+    props.isAttended !== "ABSENCE" ? "#548d54" : "#e2e2e2"};
   font-size: 14px;
   padding: 2px;
-  
 `;
 const DateBoxText = styled.span`
   padding: 5px;
   width: 100px;
-  color: ${(props) => (props.isAttended !=='ABSENCE' ? "#548d54" : "#e2e2e2")};
-  &:hover{
-    color: ${(props) => (props.isAttended !=='ABSENCE' ? "#e2e2e2" : "#548d54")};
+  color: ${(props) => (props.isAttended !== "ABSENCE" ? "#548d54" : "#e2e2e2")};
+  &:hover {
+    color: ${(props) =>
+      props.isAttended !== "ABSENCE" ? "#e2e2e2" : "#548d54"};
   }
 `;
 
 const Dates = styled.div`
-display: flex;
-column-gap: 6px;
-`
-
-const TopBox = styled.div`
-display: flex;
-flex-direction: column;
-column-gap: 6px;
-width: 100%;
-
-`
+  display: flex;
+  column-gap: 6px;
+`;
 
 const Select = styled.select`
   font-family: "Noto Sans KR", sans-serif;
@@ -110,13 +108,11 @@ const Attendance = () => {
   useEffect(() => {
     const getStudyOption = async () => {
       try {
-        const res = await axios.get('http://3.39.24.69:8080/meeting/all',
-        {
+        const res = await axios.get("http://3.39.24.69:8080/meeting/all", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
-        );
+        });
         setStudyOptions(res.data);
       } catch (error) {
         console.log(error, "주간 스터디 가져오는데 error발생");
@@ -146,18 +142,20 @@ const Attendance = () => {
     }
   }, [selectedStudy, token]);
 
-console.log(attendanceData);
+  console.log(attendanceData);
 
   const selectStudy = (event) => {
     setSelectedStudy(event.target.value);
   };
 
   return (
-    <TopBox>
+    <Box>
       <Title>출석 현황</Title>
       <AttendanceBox>
         <Select value={selectedStudy} onChange={selectStudy}>
-          <Option value="" disabled>조회 할 모임 선택</Option>
+          <Option value="" disabled>
+            조회 할 모임 선택
+          </Option>
           {studyOptions.map((study) => (
             <Option key={study.id} value={study.id}>
               {study.name}
@@ -168,11 +166,9 @@ console.log(attendanceData);
           <AllAttendances>
             {attendanceData.map((attendance) => (
               <EachAttendance key={attendance.userId}>
-                <PersonalBox>
-                {attendance.name}
-                </PersonalBox>
+                <PersonalBox>{attendance.name}</PersonalBox>
                 <Dates>
-                  {(attendance.attendanceDetailsList).map((details, index) => {
+                  {attendance.attendanceDetailsList.map((details, index) => {
                     console.log("details:", details);
                     return (
                       <DateBox key={index} isAttended={details.attendanceType}>
@@ -181,15 +177,14 @@ console.log(attendanceData);
                         </DateBoxText>
                       </DateBox>
                     );
-                  }
-                  )}
+                  })}
                 </Dates>
               </EachAttendance>
             ))}
           </AllAttendances>
         )}
       </AttendanceBox>
-    </TopBox>
+    </Box>
   );
 };
 export default Attendance;
