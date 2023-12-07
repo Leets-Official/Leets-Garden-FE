@@ -16,15 +16,17 @@ const FormBox = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   row-gap: 20px;
+  height: 80%;
 `;
 
 const Input = styled.input`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 20px;
   width: 400px;
-  height: 80px;
+  height: 50px;
   padding-left: 20px;
   padding-right: 20px;
   border: none;
@@ -36,20 +38,26 @@ const ModalFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 120px;
-  width: 80%;
-  height: 15%;
+  height: 10%;
+  width: 100%;
+  margin-bottom: 10px;
+  column-gap: 30px;
 `;
 const Button = styled.button`
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 45px;
-  width: 30%;
-  height: 70%;
+  font-size: 20px;
+  width: 10%;
+  height: 80%;
   border: none;
   border-radius: 14px;
   color: rgba(84, 141, 84, 0.5);
+  padding-left: 10px;
+  padding-right: 10px;
   transition: all 1s ease;
   &:hover {
     background-color: rgba(84, 141, 84, 0.5);
