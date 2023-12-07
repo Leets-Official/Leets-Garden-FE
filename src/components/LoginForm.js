@@ -130,7 +130,7 @@ const LoginForm = () => {
         path: "/",
         expires: expires,
       });
-        navigate("/main");
+      navigate("/main");
     } else if (loginToken.status == 404) {
       window.alert("사용자에서 해당하는 username 이 존재하지 않습니다.");
       return;
@@ -139,6 +139,11 @@ const LoginForm = () => {
     }
   };
 
+  const activeEnter = (event) => {
+    if (event.code == 'Enter') {
+      handleSubmit(event);
+    }
+  };
   return (
     <StyledLoginForm>
       <Text>Login</Text>
@@ -150,6 +155,7 @@ const LoginForm = () => {
         onChange={(e) => {
           setUsername(e.target.value);
         }}
+        onKeyDown={(e) => {activeEnter(e)}}
       />
       <Input
         type="password"
@@ -159,6 +165,7 @@ const LoginForm = () => {
         onChange={(e) => {
           setPassword(e.target.value);
         }}
+        onKeyDown={(e) => {activeEnter(e)}}
       />
       <LoginButton onClick={handleSubmit}>Login</LoginButton>
     </StyledLoginForm>
