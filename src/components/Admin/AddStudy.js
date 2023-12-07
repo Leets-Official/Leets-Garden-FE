@@ -23,7 +23,7 @@ const Form = styled.form`
 const Input = styled.input`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 36px;
+  font-size: 2em;
   width: 400px;
   height: 80px;
   border: none;
@@ -71,7 +71,7 @@ const Button = styled.button`
   cursor: pointer;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 45px;
+  font-size: 2em;
   width: 30%;
   height: 70%;
   border: none;
