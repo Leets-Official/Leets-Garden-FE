@@ -7,6 +7,7 @@ import AdminNavBox from "../components/AdminNavBox"
 
 const TDBox = styled.div`
   display: flex;
+  width: 100%;
 `;
 const Admin = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
