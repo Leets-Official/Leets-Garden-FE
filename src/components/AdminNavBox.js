@@ -12,8 +12,9 @@ import AttendanceCheck from "./Admin/AttendanceCheck";
 const Title = styled.div`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  margin-left: 30px;
   font-size: 35px;
+  margin-left: 30px;
+  margin-top: 20px;
   color: #8c8c8c;
 `;
 

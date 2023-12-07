@@ -78,7 +78,7 @@ const AddUser = ({ closeModal }) => {
     );
     if (res.status === 200) {
       window.alert(res.data.message);
-      navigate("/admin");
+      closeModal()
     } else if (res.status == 409) {
       window.alert(res.data.message);
       return;

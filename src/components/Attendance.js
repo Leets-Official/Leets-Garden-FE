@@ -11,7 +11,6 @@ const AttendanceBox = styled.div`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 1100px;
   height: 360px;
   margin: 20px;
   padding: 10px;
@@ -21,11 +20,11 @@ const AttendanceBox = styled.div`
 `;
 
 const Title = styled.div`
-  margin-left: 30px;
-  margin-top: 20px;
   font-size: 35px;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
+  margin-left: 30px;
+  margin-top: 20px;
   color: #8c8c8c;
 `;
 
@@ -73,6 +72,14 @@ const DateBoxText = styled.span`
 const Dates = styled.div`
 display: flex;
 column-gap: 6px;
+`
+
+const TopBox = styled.div`
+display: flex;
+flex-direction: column;
+column-gap: 6px;
+width: 100%;
+
 `
 
 const Select = styled.select`
@@ -146,7 +153,7 @@ console.log(attendanceData);
   };
 
   return (
-    <div>
+    <TopBox>
       <Title>출석 현황</Title>
       <AttendanceBox>
         <Select value={selectedStudy} onChange={selectStudy}>
@@ -182,7 +189,7 @@ console.log(attendanceData);
           </AllAttendances>
         )}
       </AttendanceBox>
-    </div>
+    </TopBox>
   );
 };
 export default Attendance;

@@ -21,9 +21,7 @@ const HeaderBox = styled.div`
 
 const LeftText = styled.div`
   font-size: 35px;
-  width: 40%;
-  margin-left: 5%;
-
+  width: 10%;
   @media screen and (max-width: 1200px) {
     width: 100%;
     margin-left: 0%;
@@ -32,7 +30,7 @@ const LeftText = styled.div`
 
 const MiddleText = styled.div`
   font-size: 30px;
-  width: 30%;
+  width: 50%;
 
   @media screen and (max-width: 1200px) {
     width: 0%;
@@ -42,7 +40,7 @@ const MiddleText = styled.div`
 
 const NickName = styled.div`
   font-size: 30px;
-  width: 20%;
+  width: 10%;
   margin-right: 5%;
   @media screen and (max-width: 1200px) {
     width: 0%;
@@ -54,8 +52,9 @@ const LogoutButton = styled.button`
   cursor: pointer;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 30px;
-  width: 10%;
+  font-size: 20px;
+  text-align: center;
+  width: 6%;
   border: none;
   border-radius: 14px;
   transition: all 1s ease;

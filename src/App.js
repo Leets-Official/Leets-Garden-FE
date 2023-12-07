@@ -12,7 +12,13 @@ function App() {
     <CookiesProvider>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Login />} />
+          <Route 
+            path='/' 
+            element={
+              roles === 'ADMIN' ? <Admin /> :
+              roles === 'USER' ? <Main /> :
+              <Login />}
+          />
           <Route
              path='/main'
              element={
