@@ -2,20 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 const StudyBox = styled.div`
-    font-family: "Noto Sans KR", sans-serif;
-font-weight: 700;
-  border-radius: 10px;
-  width: 70%;
-  height: 180px;
-  border: 2px solid #dcdcdc;
-  font-size: 24px;
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  transition: all 0.5s ease;
   align-items: flex-start;
-  text-align: center;
+  width: 30%;
+  height: 80%;
+  border-radius: 10px;
+  border: 2px solid #dcdcdc;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 0.8em;
+  transition: all 0.5s ease;
+  font-weight: 700;
+  font-family: "Noto Sans KR", sans-serif;
   &:hover {
     transform: scale(1.05);
     background-color: white;
@@ -24,22 +23,17 @@ font-weight: 700;
 `;
 
 const Title = styled.div`
-  font-size: 35px;
-  margin-left: 10px;
-  margin-top: 10px;
+  font-size : 2.4em;
   color: #548d54;
 `;
 
 const Content = styled.div`
   display: flex;
-  flex-direction: column;
-  padding-top: 32px;
   align-items: flex-start;
-  margin-left: 10px;
-  font-size: 24px;
-
+  flex-direction: column;
+  padding-top: 1.6em;
+  font-size: 1.4em;
 `;
-
 
 const Study = ({ content, date }) => {
   return (

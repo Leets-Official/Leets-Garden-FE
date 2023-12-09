@@ -101,7 +101,7 @@ const Allselect = styled.button`
   }
 `;
 const Option = styled.option`
-font-family: "Noto Sans KR", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   text-align: center;
   border-bottom: 0.3px solid rgba(84, 141, 84, 0.5);

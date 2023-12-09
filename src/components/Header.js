@@ -5,6 +5,8 @@ import styled from "styled-components";
 
 const HeaderBox = styled.div`
   display: flex;
+  width: 100%;
+  height: 5%;
   background-color: rgba(84, 141, 84, 0.5);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   color: rgba(0, 0, 0, 0.7);
@@ -21,16 +23,17 @@ const HeaderBox = styled.div`
 
 const LeftText = styled.div`
   font-size: 35px;
+  margin-left: 20px;
   width: 10%;
   @media screen and (max-width: 1200px) {
-    width: 100%;
+    width: 25%;
     margin-left: 0%;
   }
 `;
 
 const MiddleText = styled.div`
   font-size: 30px;
-  width: 50%;
+  width: 55%;
 
   @media screen and (max-width: 1200px) {
     width: 0%;
@@ -40,10 +43,10 @@ const MiddleText = styled.div`
 
 const NickName = styled.div`
   font-size: 30px;
-  width: 30%;
+  width: 35%;
   margin-right: 70px;
   @media screen and (max-width: 1200px) {
-    width: 0%;
+    width: 25%;
     font-size: 0px;
     margin-right: 0%;
   }
@@ -55,7 +58,7 @@ const LogoutButton = styled.button`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 20px;
-  width: 25%;
+  width: 20%;
   border: none;
   border-radius: 12px;
   transition: all 1s ease;
@@ -66,8 +69,8 @@ const LogoutButton = styled.button`
   margin-right: 0px;
 
   @media screen and (max-width: 1200px) {
-    width: 0%;
-    font-size: 0px;
+    width: 50%;
+    font-size: 16px;
     margin-right: 0%;
   }
 `;

@@ -5,9 +5,18 @@ import Header from "../components/Header";
 import StudyList from "../components/StudyList";
 import TodayList from "../components/TodayList";
 
+const MainBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+`;
+
 const TDBox = styled.div`
   display: flex;
   width: 100%;
+  height: 60%;
+  column-gap: 3em;
 `;
 const Main = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -23,7 +32,7 @@ const Main = () => {
   }, []);
 
   return (
-    <div>
+    <MainBox>
       <Header
         leftText={"Leets Garden"}
       />
@@ -39,7 +48,7 @@ const Main = () => {
           <Attendance />
         </TDBox>
       )}
-    </div>
+    </MainBox>
   );
 };
 
