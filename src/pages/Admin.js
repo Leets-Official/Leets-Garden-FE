@@ -5,9 +5,18 @@ import Header from "../components/Header";
 import StudyList from "../components/StudyList";
 import AdminNavBox from "../components/AdminNavBox"
 
+const AdminBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+`;
+
 const TDBox = styled.div`
   display: flex;
   width: 100%;
+  height: 60%;
+  column-gap: 1em;
 `;
 const Admin = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -23,7 +32,7 @@ const Admin = () => {
   }, []);
 
   return (
-    <div>
+    <AdminBox>
       <Header
         leftText={"Leets Garden"}
       />
@@ -39,7 +48,7 @@ const Admin = () => {
           <Attendance />
         </TDBox>
       )}
-    </div>
+    </AdminBox>
   );
 };
 

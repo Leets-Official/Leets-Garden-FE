@@ -4,8 +4,22 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 
 const Box = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 100%;
 `;
+
+const Title = styled.div`
+  display: flex;
+  height: 15%;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 2.5em;
+  margin-left: 0.5em;
+  margin-top: 1.5em;
+  color: #8c8c8c;
+  `;
 
 const AttendanceBox = styled.div`
   display: flex;
@@ -14,37 +28,46 @@ const AttendanceBox = styled.div`
   align-items: flex-start;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 95%;
-  height: 360px;
-  padding: 10px;
+  width: 94%;
+  height: 70%;
   border-radius: 10px;
-  font-size: 30px;
+  font-size: 2em;
+  margin: 0.55em;
+  padding: 0.4em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  margin-top: 20px;
-`;
+  `;
 
-const Title = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 35px;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 700;
-  margin-top: 20px;
-  color: #8c8c8c;
-`;
-
+  const AllAttendances = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    row-gap: 6px;
+    margin: 10px;
+  `;
+  
+  const Select = styled.select`
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    text-align: center;
+    font-size: 0.6em;
+    height: 10%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  `;
 const EachAttendance = styled.div`
   display: flex;
   align-items: center;
-  column-gap: 10px;
-  font-size: 22px;
+  column-gap: 0.8em;
+  font-size: 0.6em;
   color: #8c8c8c;
-`;
+  `;
 
 const PersonalBox = styled.div`
   display: flex;
-  width: 90px;
+  width: 4em;
 `;
 
 const Option = styled.option`
@@ -52,22 +75,28 @@ const Option = styled.option`
   font-weight: 700;
 `;
 
+  const Dates = styled.div`
+    display: flex;
+    column-gap: 0.2em;
+  `;
+
 const DateBox = styled.div`
   display: flex;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  width: 34px;
-  height: 30px;
+  width: 2.5em;
+  height: 2em;
   color: ${(props) => (props.isAttended !== "ABSENCE" ? "white" : "black")};
   background-color: ${(props) =>
     props.isAttended !== "ABSENCE" ? "#548d54" : "#e2e2e2"};
-  font-size: 14px;
-  padding: 2px;
+  font-size: 0.8em;
+  padding: 0.2em;
 `;
+
 const DateBoxText = styled.span`
-  padding: 5px;
-  width: 100px;
+  width: 3em;
+  padding: 0.6em;
   color: ${(props) => (props.isAttended !== "ABSENCE" ? "#548d54" : "#e2e2e2")};
   &:hover {
     color: ${(props) =>
@@ -75,29 +104,8 @@ const DateBoxText = styled.span`
   }
 `;
 
-const Dates = styled.div`
-  display: flex;
-  column-gap: 6px;
-`;
 
-const Select = styled.select`
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 700;
-  text-align: center;
-  font-size: 24px;
-  height: 36px;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-`;
-const AllAttendances = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  row-gap: 6px;
-  margin: 10px;
-`;
+
 const Attendance = () => {
   const [attendanceData, setAttendanceData] = useState([]);
   const [studyOptions, setStudyOptions] = useState([]);

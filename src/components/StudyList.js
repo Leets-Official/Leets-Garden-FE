@@ -6,34 +6,44 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Study from "./Study";
 
+const ListBox = styled.div`
+  width: 98%;
+  height: 35%;
+`;
+
 const StyledSlider = styled(Slider)`
   display: flex;
-  width: 90%;
+  width: 94%;
+  height: 100%;
   .slick-next:before,
   .slick-prev:before {
     display: flex;
     justify-content: center;
     color: #548d54;
-    font-size: 35px;
+    font-size: 30px;
   }
   .slick-dots li button:before {
     font-size: 20px;
     line-height: 20px;
     color: #548d54;
   }
+  margin-top: 1em;
 `;
 
 const Title = styled.div`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 35px;
-  margin-left: 30px;
+  font-size: 2.5em;
+  height: 20%;
+  margin-left: 0.5em;
   color: #8c8c8c;
 `;
 
 const StudyListBox = styled.div`
-  margin: 20px;
+  margin:1em;
   display: flex;
+  width: 100%;
+  height: 80%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -44,6 +54,8 @@ const StudyListBox = styled.div`
 
 const StudyListBox2 = styled.div`
   display: flex;
+  width: 90%;
+  height: 90%;
   column-gap: 30px;
   justify-content: space-around;
 `;
@@ -52,8 +64,8 @@ const NullBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1700px;
-  height: 180px;
+  width: 90%;
+  height: 90%;
   color: #8c8c8c;
   font-size: 60px;
   margin-top: 30px;
@@ -90,27 +102,32 @@ const StudyList = () => {
     let i = 0;
     const updatedStudies = [];
     while (i < studyData.length) {
-      updatedStudies.push(<Study content={studyData[i].meetingResponse} date={studyData[i].meetingDate} />);
+      updatedStudies.push(
+        <Study
+          content={studyData[i].meetingResponse}
+          date={studyData[i].meetingDate}
+        />
+      );
       i++;
     }
     setStudies(updatedStudies);
   }, [studyData]);
 
   return (
-    <div>
+    <ListBox>
       <Title>전체 모임 목록</Title>
       <StudyListBox>
-          {studies.length > 0 ? (
-            studies.length <= 3 ? (
-              <StudyListBox2>{studies}</StudyListBox2>
-            ) : (
-              <StyledSlider {...settings}>{studies}</StyledSlider>
-            )
+        {studies.length > 0 ? (
+          studies.length <= 3 ? (
+            <StudyListBox2>{studies}</StudyListBox2>
           ) : (
-            <NullBox>이런! 예정된 스터디가 없습니다.</NullBox>
-          )}
+            <StyledSlider {...settings}>{studies}</StyledSlider>
+          )
+        ) : (
+          <NullBox>이런! 예정된 스터디가 없습니다.</NullBox>
+        )}
       </StudyListBox>
-    </div>
+    </ListBox>
   );
 };
 export default StudyList;

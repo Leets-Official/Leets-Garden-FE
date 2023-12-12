@@ -10,15 +10,13 @@ const Button = styled.button`
   align-items: center;
   border: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  width: 200px;
-  height: 150px;
-  font-size: 30px;
-  border-radius: 14px;
+  width: 28%;
+  height: 42%;
+  font-size: 1.8em;
+  border-radius: 12px;
   color: rgba(84, 141, 84, .5);
   transition: all 1s ease;
-  transform: scale(1);
   &:hover {
-    transform: scale(1.05);
     background-color: rgba(84, 141, 84, .5);
     color: white;
   }

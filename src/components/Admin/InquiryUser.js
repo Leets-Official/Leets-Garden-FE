@@ -158,6 +158,7 @@ const InquiryUser = ({ closeModal }) => {
       {showInquiry && (
         <InquiryForm>
           <UserForm>
+            {" "}
             <UserInfo>학번</UserInfo>
             <UserInfo>이름</UserInfo>
             <UserInfo>분야</UserInfo>

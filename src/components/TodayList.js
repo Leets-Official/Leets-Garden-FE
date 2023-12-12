@@ -4,39 +4,48 @@ import styled from "styled-components";
 import Today from "./Today";
 import { useCookies } from "react-cookie";
 
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+`;
+
+const Title = styled.div`
+  display: flex;
+  height: 15%;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 2.5em;
+  margin-left: 0.5em;
+  margin-top: 1.5em;
+  color: #8c8c8c;
+`;
+
 const TodayBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   row-gap: 20px;
-  width: 700px;
-  height: 360px;
+  width: 100%;
+  height: 70%;
   border-radius: 10px;
-  margin: 20px;
+  margin: 1em;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-`;
-
-const Title = styled.div`
-  font-size: 35px;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 700;
-  margin-left: 30px;
-  margin-top: 20px;
-  color: #8c8c8c;
 `;
 
 const NullBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #8c8c8c;
-  margin-top: 20px;
-  font-size: 60px;
+  height: 100%;
+  font-size: 2.3em;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
+  color: #8c8c8c;
 `;
 
 const TodayList = () => {
@@ -44,6 +53,7 @@ const TodayList = () => {
   const [studies, setStudies] = useState([]);
   const [cookies] = useCookies();
   const token = cookies.token;
+
   useEffect(() => {
     const getStudies = async () => {
       try {
@@ -56,6 +66,7 @@ const TodayList = () => {
           }
         );
         setStudyData(res.data);
+        console.log("오늘거 가져오기", res.data);
       } catch (error) {
         console.error("스터디 오늘자 오류 발생:", error);
       }
@@ -69,15 +80,18 @@ const TodayList = () => {
     ));
     setStudies(updatedStudies);
   }, [studyData]);
+
   return (
-    <div>
+    <Box>
       <Title>오늘 모임 목록</Title>
-      <TodayBox>{studies.length > 0 ? (
+      <TodayBox>
+        {studies.length > 0 ? (
           studies
         ) : (
           <NullBox>오늘은 스터디 없는 날</NullBox>
-        )}</TodayBox>
-    </div>
+        )}
+      </TodayBox>
+    </Box>
   );
 };
 export default TodayList;

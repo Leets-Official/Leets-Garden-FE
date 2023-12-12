@@ -10,61 +10,66 @@ const FormBox = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  margin-bottom: 40px;
 `;
 
-const Form = styled.form`
+const Form = styled.div`
   display: flex;
-  row-gap: 20px;
-  column-gap: 40px;
-  margin-bottom: 60px;
+  align-items: center;
+  justify-content:center;
+  height: 80%;
+  column-gap: 2em;
+  margin-bottom: 2em;
+`;
+
+const InputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5em;
+  width: 45%;
+  height: 60%;
+  margin-top: 1em;
 `;
 
 const Input = styled.input`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 2em;
-  width: 400px;
-  height: 80px;
+  width: 90%;
+  height: 30%;
   border: none;
   border-radius: 15px;
-  padding-left: 20px;
+  padding-left: 0.5em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 `;
 
-const InputBox = styled.div`
+const SelectBox = styled.div`
   display: flex;
+  width: 45%;
+  height: 60%;
   flex-direction: column;
-  row-gap: 20px;
+  font-size: 1.5em;
 `;
 
 const Select = styled.select`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 1em;
   color: #555555;
-  width: 400px;
-  height: 220px;
+  width: 90%;
+  height: 90%;
   border: none;
   border-radius: 15px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
 `;
 
-const SelectBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 32px;
-  row-gap: 10px;
-`;
-
 const ModalFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 120px;
-  width: 80%;
-  height: 15%;
+  column-gap:2em;
+  width: 100%;
+  height: 20%;
 `;
 
 const Button = styled.button`
@@ -72,8 +77,8 @@ const Button = styled.button`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 2em;
-  width: 30%;
-  height: 70%;
+  width: 25%;
+  height: 60%;
   border: none;
   border-radius: 14px;
   color: rgba(84, 141, 84, 0.5);
@@ -87,10 +92,10 @@ const Allselect = styled.button`
   cursor: pointer;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  margin-left: 20px;
-  font-size: 20px;
-  width: 100px;
-  height: 30px;
+  margin-left: 0.6em;
+  font-size: 0.8em;
+  width: 30%;
+  height: 100%;
   border: none;
   border-radius: 14px;
   color: black;
@@ -101,7 +106,7 @@ const Allselect = styled.button`
   }
 `;
 const Option = styled.option`
-font-family: "Noto Sans KR", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   text-align: center;
   border-bottom: 0.3px solid rgba(84, 141, 84, 0.5);
@@ -193,6 +198,7 @@ const AddStudy = ({ closeModal }) => {
   };
 
   console.log(userList);
+
   return (
     <FormBox>
       <Form>
@@ -222,7 +228,7 @@ const AddStudy = ({ closeModal }) => {
         <SelectBox>
           <div>
             {" "}
-            ctrl누르고 여러 명 선택
+            ctrl + 여러 명 선택
             <Allselect onClick={selectAll}>모두 선택</Allselect>
           </div>
           <Select
