@@ -142,7 +142,7 @@ const AttendanceCheck = ({ closeModal }) => {
 
   const inquiryStudy = () => {
     const filterData = allData.filter(
-      (data) => parseInt(selectedStudy) === data.meetingResponse.id
+      (data) => parseInt(selectedStudy) === data.id
     );
     setUserList(filterData[0].userAttendanceResponses);
     setShowUserList(true);
@@ -154,7 +154,7 @@ const AttendanceCheck = ({ closeModal }) => {
   useEffect(() => {
     if (allData.length > 0) {
       const filterData = allData.filter(
-        (data) => parseInt(selectedStudy) === data.meetingResponse.id
+        (data) => parseInt(selectedStudy) === data.id
       );
       setUserList(filterData[0].userAttendanceResponses);
     }
@@ -202,17 +202,17 @@ const AttendanceCheck = ({ closeModal }) => {
       setAllData(res.data);
       res.data.forEach((element) => {
         const push = {
+          date: element.meetingDate.join("."),
           name: element.meetingResponse.meetingName,
-          id: element.meetingResponse.id,
+          id: element.id,
         };
         nameList.push(push);
       });
-      console.log(nameList);
       setStudyOption(nameList);
       setSelectedStudy(nameList[0].id);
     };
     getStudyOption();
-  }, [showUserList, token]);
+  }, [token]);
 
   return (
     <FormBox>
@@ -220,7 +220,7 @@ const AttendanceCheck = ({ closeModal }) => {
         <Select value={selectedStudy} onChange={selectStudy}>
           {studyOption.map((study) => (
             <Option key={study.id} value={study.id}>
-              {study.name}
+              {study.name} {study.date}
             </Option>
           ))}
         </Select>
