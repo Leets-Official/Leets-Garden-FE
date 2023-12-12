@@ -57,7 +57,7 @@ const LogoutButton = styled.button`
   margin-left: 40px;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 0.7em;
   width: 20%;
   border: none;
   border-radius: 12px;
