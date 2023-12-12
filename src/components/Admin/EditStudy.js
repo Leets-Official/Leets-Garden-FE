@@ -10,82 +10,94 @@ const FormBox = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  margin-bottom: 40px;
 `;
 
 const Form = styled.form`
   display: flex;
-  row-gap: 20px;
-  column-gap: 40px;
-  margin-bottom: 10px;
-`;
-
-const Input = styled.input`
-font-family: "Noto Sans KR", sans-serif;
-  font-weight: 700;  font-size: 2em;
-  width: 400px;
-  height: 80px;
-  border: none;
-  border-radius: 15px;
-  padding-left: 20px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+  column-gap: 2em;
+  margin-bottom: 2em;
 `;
 
 const InputBox = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  align-items: flex-end;
+  row-gap: 1.5em;
+  width: 45%;
+  height: 70%;
+  margin-top: 1em;
+`;
+
+const Input = styled.input`
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  width: 80%;
+  height: 30%;
+  border: none;
+  border-radius: 15px;
+  padding-left: 0.5em;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+`;
+
+const SelectBox = styled.div`
+  display: flex;
+  width: 45%;
+  height: 70%;
+  flex-direction: column;
+  font-size: 1.5em;
 `;
 
 const Select = styled.select`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
+  font-size: 1em;
   color: #555555;
-  font-size: 30px;
-  width: 400px;
-  height: 220px;
+  width: 90%;
+  height: 90%;
   border: none;
   border-radius: 15px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
+`;
+
+const EditBox = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 15%;
+  column-gap: 2em;
+  font-size: 1.5em;
+`;
+
+const TextxBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  font-size: 1em;
 `;
 
 const Select2 = styled.select`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 1em;
   color: #555555;
   text-align: center;
-  width: 300px;
-  height: 40px;
+  width: 50%;
   border: none;
   border-radius: 15px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  margin-top: 10px;
-`;
-
-const SelectBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 32px;
-  row-gap: 10px;
-`;
-
-const EditBox = styled.div`
-  display: flex;
-  margin-left: 40px;
-  column-gap: 60px;
-  align-items: center;
-  font-size: 30px;
-  margin-bottom: 20px;
 `;
 
 const ModalFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 120px;
-  width: 80%;
+  column-gap: 2em;
+  width: 100%;
   height: 15%;
 `;
 
@@ -94,7 +106,7 @@ const Button = styled.button`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 2em;
-  width: 30%;
+  width: 25%;
   height: 70%;
   border: none;
   border-radius: 14px;
@@ -201,6 +213,7 @@ const EditStudy = ({ closeModal }) => {
           meetingDay: res.data.meetingDay,
           userList: res.data.userList,
         });
+        console.log(res.data, "이건 해당되는 스터디 정보");
       } catch (error) {
         console.log(error, "스터디 정보 가져오는데 error발생");
       }
@@ -231,7 +244,12 @@ const EditStudy = ({ closeModal }) => {
   console.log("formData는", formData);
   const EditNewStudy = async (e) => {
     e.preventDefault();
-    if (!formData.meetingName || !formData.meetingPlace || !formData.meetingDay || formData.userList.length === 0) {
+    if (
+      !formData.meetingName ||
+      !formData.meetingPlace ||
+      !formData.meetingDay ||
+      formData.userList.length === 0
+    ) {
       alert("필수 항목을 모두 작성해주세요.");
       return;
     }
@@ -273,7 +291,7 @@ const EditStudy = ({ closeModal }) => {
   return (
     <FormBox>
       <EditBox>
-        수정 할 모임을 선택
+        <TextxBox>수정 할 모임을 선택</TextxBox>
         <Select2 value={selectedStudy} onChange={selectStudy}>
           <Option value="" disabled>
             조회 할 모임 선택

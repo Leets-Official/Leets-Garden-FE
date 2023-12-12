@@ -5,8 +5,8 @@ const StudyBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 30%;
-  height: 80%;
+  width: 60%;
+  height: 100%;
   border-radius: 10px;
   border: 2px solid #dcdcdc;
   margin-top: 1em;

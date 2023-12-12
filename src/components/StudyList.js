@@ -27,6 +27,7 @@ const StyledSlider = styled(Slider)`
     line-height: 20px;
     color: #548d54;
   }
+  margin-top: 1em;
 `;
 
 const Title = styled.div`
@@ -54,7 +55,7 @@ const StudyListBox = styled.div`
 const StudyListBox2 = styled.div`
   display: flex;
   width: 90%;
-  height: 100%;
+  height: 90%;
   column-gap: 30px;
   justify-content: space-around;
 `;
@@ -64,7 +65,7 @@ const NullBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 90%;
-  height: 180px;
+  height: 90%;
   color: #8c8c8c;
   font-size: 60px;
   margin-top: 30px;

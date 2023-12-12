@@ -6,7 +6,7 @@ import { useCookies } from "react-cookie";
 const Box = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
   height: 100%;
 `;
 
@@ -17,7 +17,7 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 2.5em;
   margin-left: 0.5em;
-  margin-top: 1em;
+  margin-top: 1.5em;
   color: #8c8c8c;
   `;
 
@@ -29,7 +29,7 @@ const AttendanceBox = styled.div`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   width: 94%;
-  height: 80%;
+  height: 70%;
   border-radius: 10px;
   font-size: 2em;
   margin: 0.55em;

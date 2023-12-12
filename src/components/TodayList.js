@@ -7,7 +7,7 @@ import { useCookies } from "react-cookie";
 const Box = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
   height: 100%;
 `;
 
@@ -18,7 +18,7 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 2.5em;
   margin-left: 0.5em;
-  margin-top: 1em;
+  margin-top: 1.5em;
   color: #8c8c8c;
 `;
 
@@ -29,7 +29,7 @@ const TodayBox = styled.div`
   align-items: center;
   row-gap: 20px;
   width: 100%;
-  height: 80%;
+  height: 70%;
   border-radius: 10px;
   margin: 1em;
   padding: 10px;
