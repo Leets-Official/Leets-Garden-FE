@@ -103,9 +103,9 @@ const Header = ({ leftText }) => {
       </LeftText>
       <MiddleText></MiddleText>
       <NickName>
-        {name == "undefined" ? null : `${name}님의 Garden`}
-        {name == "undefined" ? null : <Sprout src="images/leets.png" />}
-        {name == "undefined" ? null : (
+        {name === "undefined" ||name === undefined ? null : `${name}님의 Garden`}
+        {name === "undefined" ||name === undefined ? null : <Sprout src="images/leets.png" />}
+        {name === "undefined" ||name === undefined ? null : (
           <LogoutButton onClick={Logout}>Logout</LogoutButton>
         )}
       </NickName>
