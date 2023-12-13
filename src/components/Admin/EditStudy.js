@@ -208,10 +208,10 @@ const EditStudy = ({ closeModal }) => {
         );
         setStudyInfo(res.data);
         setFormData({
-          meetingName: res.data.meetingName,
-          meetingPlace: res.data.meetingPlace,
-          meetingDay: res.data.meetingDay,
-          userList: res.data.userList,
+          meetingName: res.data.meetingResponse.meetingName,
+          meetingPlace: res.data.meetingResponse.meetingPlace,
+          meetingDay: res.data.meetingResponse.meetingDay,
+          userList: res.data.meetingResponse.userList,
         });
         console.log(res.data, "이건 해당되는 스터디 정보");
       } catch (error) {
