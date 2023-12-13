@@ -123,6 +123,7 @@ const AttendanceCol = styled.div`
 
 const UserAttendance = styled.div`
   font-size: 20px;
+  width: 120px;
   font-weight: bold;
   text-align: center;
 `;
