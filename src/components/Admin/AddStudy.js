@@ -191,6 +191,7 @@ const AddStudy = ({ closeModal }) => {
         },
       });
       closeModal();
+      window.location.reload();
       return res;
     } catch (error) {
       console.error("스터디 생성오류", error);

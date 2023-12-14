@@ -15,6 +15,7 @@ const StyledSlider = styled(Slider)`
   display: flex;
   width: 94%;
   height: 100%;
+  align-items: center;
   .slick-next:before,
   .slick-prev:before {
     display: flex;
@@ -23,11 +24,11 @@ const StyledSlider = styled(Slider)`
     font-size: 30px;
   }
   .slick-dots li button:before {
+    margin-top: 10px;
     font-size: 20px;
     line-height: 20px;
     color: #548d54;
   }
-  margin-top: 1em;
 `;
 
 const Title = styled.div`
@@ -40,7 +41,7 @@ const Title = styled.div`
 `;
 
 const StudyListBox = styled.div`
-  margin:1em;
+  margin: 1em;
   display: flex;
   width: 100%;
   height: 80%;
@@ -57,7 +58,15 @@ const StudyListBox2 = styled.div`
   width: 90%;
   height: 90%;
   column-gap: 30px;
+  padding-bottom: 1em;
   justify-content: space-around;
+`;
+
+const EachStudy = styled.div`
+  display: flex;
+  width: 30%;
+  height: 80%;
+  column-gap: 30px;
 `;
 
 const NullBox = styled.div`
@@ -119,7 +128,11 @@ const StudyList = () => {
       <StudyListBox>
         {studies.length > 0 ? (
           studies.length <= 3 ? (
-            <StudyListBox2>{studies}</StudyListBox2>
+            <StudyListBox2>
+              <EachStudy>{studies[0]}</EachStudy>
+              <EachStudy>{studies[1]}</EachStudy>
+              <EachStudy>{studies[2]}</EachStudy>
+            </StudyListBox2>
           ) : (
             <StyledSlider {...settings}>{studies}</StyledSlider>
           )

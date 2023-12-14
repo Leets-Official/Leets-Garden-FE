@@ -58,13 +58,13 @@ const LogoutButton = styled.button`
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 0.7em;
+  color: rgba(84, 141, 84, 0.5);;
   width: 20%;
   border: none;
   border-radius: 12px;
   transition: all 1s ease;
-  background-color: rgba(84, 141, 84, 0.5);
   &:hover {
-    color: white;
+    color: black;
   }
   margin-right: 0px;
 
