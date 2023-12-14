@@ -6,8 +6,11 @@ import { useCookies } from "react-cookie";
 const Box = styled.div`
   display: flex;
   flex-direction: column;
-  width: 95%;
+  width: 60%;
   height: 100%;
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
@@ -32,8 +35,9 @@ const AttendanceBox = styled.div`
   height: 70%;
   border-radius: 10px;
   font-size: 2em;
-  margin: 0.55em;
-  padding: 0.4em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   `;

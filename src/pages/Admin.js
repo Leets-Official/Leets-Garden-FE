@@ -16,7 +16,7 @@ const TDBox = styled.div`
   display: flex;
   width: 100%;
   height: 60%;
-  column-gap: 1em;
+  column-gap: 20px;
 `;
 const Admin = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

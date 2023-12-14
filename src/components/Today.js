@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const Title = styled.div`
-  font-size: 30px;
+  font-size: 28px;
   color: #8c8c8c;
 `;
 const Box = styled.div`
   border-radius: 10px;
-  width: 600px;
-  height: 100px;
+  width: 90%;
+  height: 35%;
   background-color: #eeeeee;
   display: flex;
   padding-left : 20px;
@@ -18,7 +18,7 @@ const Box = styled.div`
 
 const TodayBox = styled.div`
   border-radius: 10px;
-  width: 600px;
+  width: 100%;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   display: flex;
