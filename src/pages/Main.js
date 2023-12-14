@@ -16,7 +16,7 @@ const TDBox = styled.div`
   display: flex;
   width: 100%;
   height: 60%;
-  column-gap: 3em;
+  column-gap: 40px;
 `;
 const Main = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

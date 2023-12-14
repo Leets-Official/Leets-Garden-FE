@@ -12,7 +12,7 @@ import AttendanceCheck from "./Admin/AttendanceCheck";
 const Box = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 40%;
   height: 100%;
 `;
 
@@ -36,7 +36,7 @@ const TodayBox = styled.div`
   height: 70%;
   border-radius: 10px;
   column-gap: 1em;
-  margin: 0.55em;
+  margin: 10px;
   overflow-y: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
