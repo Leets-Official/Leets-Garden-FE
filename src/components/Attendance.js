@@ -52,7 +52,7 @@ const AttendanceBox = styled.div`
     font-weight: 700;
     text-align: center;
     font-size: 0.6em;
-    height: 10%;
+    height: 15%;
     border: none;
     border-radius: 15px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

@@ -40,7 +40,7 @@ const Title = styled.div`
 `;
 
 const StudyListBox = styled.div`
-  margin:1em;
+  margin: 1em;
   display: flex;
   width: 100%;
   height: 80%;
@@ -57,7 +57,15 @@ const StudyListBox2 = styled.div`
   width: 90%;
   height: 90%;
   column-gap: 30px;
+  padding-bottom: 1em;
   justify-content: space-around;
+`;
+
+const EachStudy = styled.div`
+  display: flex;
+  width: 30%;
+  height: 80%;
+  column-gap: 30px;
 `;
 
 const NullBox = styled.div`
@@ -119,7 +127,11 @@ const StudyList = () => {
       <StudyListBox>
         {studies.length > 0 ? (
           studies.length <= 3 ? (
-            <StudyListBox2>{studies}</StudyListBox2>
+            <StudyListBox2>
+              <EachStudy>{studies[0]}</EachStudy>
+              <EachStudy>{studies[1]}</EachStudy>
+              <EachStudy>{studies[2]}</EachStudy>
+            </StudyListBox2>
           ) : (
             <StyledSlider {...settings}>{studies}</StyledSlider>
           )

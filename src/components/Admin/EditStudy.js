@@ -222,7 +222,7 @@ const EditStudy = ({ closeModal }) => {
       getStudyInfo();
     }
   }, [selectedStudy, token]);
-
+  console.log("formData는", formData);
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "userList") {
@@ -241,7 +241,6 @@ const EditStudy = ({ closeModal }) => {
       });
     }
   };
-  console.log("formData는", formData);
   const EditNewStudy = async (e) => {
     e.preventDefault();
     if (
@@ -266,6 +265,7 @@ const EditStudy = ({ closeModal }) => {
       );
       console.log("수정 성공");
       closeModal();
+      window.location.reload();
       return res;
     } catch (error) {
       console.error("스터디 수정오류", error);

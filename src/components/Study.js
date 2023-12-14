@@ -12,18 +12,15 @@ const StudyBox = styled.div`
   margin-top: 1em;
   margin-bottom: 1em;
   padding: 0.8em;
-  transition: all 0.5s ease;
   font-weight: 700;
   font-family: "Noto Sans KR", sans-serif;
   &:hover {
-    transform: scale(1.05);
-    background-color: white;
     cursor: pointer;
   }
 `;
 
 const Title = styled.div`
-  font-size : 2.4em;
+  font-size : 2em;
   color: #548d54;
 `;
 

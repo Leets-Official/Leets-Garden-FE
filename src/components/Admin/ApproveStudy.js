@@ -114,7 +114,7 @@ const ApproveStudy = ({ closeModal }) => {
   });
   const [studyOptions, setStudyOptions] = useState([]);
   const [selectedStudyId, setSelectedStudyId] = useState("");
-
+console.log(formData);
   useEffect(() => {
     const getStudyOption = async () => {
       try {
@@ -173,6 +173,7 @@ const ApproveStudy = ({ closeModal }) => {
       );
       console.log("모임 승인 성공");
       closeModal();
+      window.location.reload();
       return res;
     } catch (error) {
       console.error("스터디 수정오류", error);
