@@ -14,9 +14,6 @@ const StudyBox = styled.div`
   padding: 0.8em;
   font-weight: 700;
   font-family: "Noto Sans KR", sans-serif;
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const Title = styled.div`

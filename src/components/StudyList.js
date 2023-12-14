@@ -15,6 +15,7 @@ const StyledSlider = styled(Slider)`
   display: flex;
   width: 94%;
   height: 100%;
+  align-items: center;
   .slick-next:before,
   .slick-prev:before {
     display: flex;
@@ -23,11 +24,11 @@ const StyledSlider = styled(Slider)`
     font-size: 30px;
   }
   .slick-dots li button:before {
+    margin-top: 10px;
     font-size: 20px;
     line-height: 20px;
     color: #548d54;
   }
-  margin-top: 1em;
 `;
 
 const Title = styled.div`
