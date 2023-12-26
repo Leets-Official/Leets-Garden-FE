@@ -33,6 +33,7 @@ Leets zero100 2기, 토이 프로젝트
 
 ## 주소
 - Swagger : http://3.39.24.69:8080/swagger-ui/index.html
+- Front-End server : http://3.27.217.93:8000
 - Back-End server : http://ec2-3-39-24-69.ap-northeast-2.compute.amazonaws.com:8080
 - notion : https://www.notion.so/Leets-Garden-21199de7eb1b4aa9b4444916434469d6?pvs=4
 
